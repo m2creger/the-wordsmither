@@ -30,4 +30,15 @@ function parseFromXMLString() {
 	console.log(parsedData);
 }
 
+function startTimer() {
+	console.log("Timer started");
+	var count = 0;
+
+	if (count <= 60) {
+		console.log("Timer")
+		count++
+		document.getElementById("startGameButton").innerHTML = count;
+	}
+}
+
 
