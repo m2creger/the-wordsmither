@@ -12,6 +12,7 @@ var category3 = document.getElementById("category3Text");
 var category4 = document.getElementById("category4Text");
 var category5 = document.getElementById("category5Text");
 var category6 = document.getElementById("category6Text");
+var timer = document.getElementById("timerDigits");
 
 function getDictionaryData() {
 	//console.log(this.responseText);
@@ -21,13 +22,25 @@ function getDictionaryData() {
 
 var newRequest = new XMLHttpRequest();
 newRequest.addEventListener("load", getDictionaryData);
-newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/chicken?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
+newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/lamb?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
 newRequest.send();
 
 function parseFromXMLString() {
 	var newParser = new DOMParser();
-	var parsedData = newParser.parseFromString(responseData, "text/xml");
-	console.log(parsedData);
+	var data = newParser.parseFromString(responseData, "text/xml");
+	console.log(data);
+	var parsedData = data.getElementsByTagName("dt");
+	var nodes = [];
+	var text;
+	for (var i = 0; i < parsedData.length; i++) {
+		console.log(parsedData[i]);
+		text = parsedData[i].childNodes[0].nodeValue;
+		console.log(text);
+		nodes.push(text);
+	}
+	console.log(nodes);
+	return nodes;
+	
 }
 
 function startTimer() {
