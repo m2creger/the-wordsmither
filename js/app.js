@@ -22,13 +22,26 @@ window.onload = function() {
 		tens = "00";
 		seconds = "00";
 		appendTenths.innerHTML = tens;
-		appendSeconds = seconds;
+		appendSeconds.innerHTML = seconds;
 	}
 
 	function startTimer() {
 		tens++;
 		if (tens < 9) {
 			appendTenths.innerHTML = "0" + tens;
+ 		}
+ 		if (tens > 9) {
+ 			appendTenths.innerHTML = tens;
+ 		}
+ 		if (tens > 99) {
+ 			console.log("seconds");
+ 			seconds++;
+ 			appendSeconds.innerHTML = "0" + seconds;
+ 			tens = 0;
+ 			appendTens.innerHTML = "0" + 0;
+ 		}
+ 		if (seconds > 9) {
+ 			appendSeconds.innerHTML = seconds;
  		}
 	}
 }
