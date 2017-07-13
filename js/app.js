@@ -1,6 +1,37 @@
 window.addEventListener("load", function(getDictionaryData) {
 	console.log("All resources finished loading!");
 })
+window.onload = function() {
+	var seconds = 00;
+	var tens = 00;
+	var appendTenths = document.getElementById("tens");
+	var appendSeconds = document.getElementById("seconds");
+	var startButton = document.getElementById("startGameButton");
+	var stopButton = document.getElementById("stopGameButton");
+	var newRound = document.getElementById("startNewRound");
+	var interval;
+	startButton.onclick = function() {
+		clearInterval(interval);
+		interval = setInterval(startTimer, 10);
+	}
+	stopButton.onclick = function() {
+		clearInterval(interval);
+	}
+	newRound.onclick = function() {
+		clearInterval(interval);
+		tens = "00";
+		seconds = "00";
+		appendTenths.innerHTML = tens;
+		appendSeconds = seconds;
+	}
+
+	function startTimer() {
+		tens++;
+		if (tens < 9) {
+			appendTenths.innerHTML = "0" + tens;
+ 		}
+	}
+}
 var responseData;
 var player1words = [];
 var player2words = [];
@@ -46,6 +77,8 @@ function parseFromXMLString() {
 function startTimer() {
 	console.log("Timer started");
 	var count = 0;
+	
+
 
 	if (count <= 60) {
 		console.log("Timer")
