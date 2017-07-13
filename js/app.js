@@ -69,6 +69,10 @@ newRequest.addEventListener("load", getDictionaryData);
 newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/lamb?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
 newRequest.send();
 
+function startNewGame() {
+
+}
+
 function parseFromXMLString() {
 	var newParser = new DOMParser();
 	var data = newParser.parseFromString(responseData, "text/xml");
@@ -90,8 +94,6 @@ function parseFromXMLString() {
 function startTimer() {
 	console.log("Timer started");
 	var count = 0;
-	
-
 
 	if (count <= 60) {
 		console.log("Timer")
