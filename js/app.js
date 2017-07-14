@@ -1,7 +1,9 @@
 
+
 window.addEventListener("load", function(getDictionaryData) {
 	console.log("All resources finished loading!");
 })
+
 window.onload = function() {
 	var seconds = 00;
 	var tens = 00;
@@ -19,11 +21,7 @@ window.onload = function() {
 		clearInterval(interval);
 	}
 	newRound.onclick = function() {
-		clearInterval(interval);
-		tens = "00";
-		seconds = "00";
-		appendTenths.innerHTML = tens;
-		appendSeconds.innerHTML = seconds;
+		
 	}
 
 	function startTimer() {
@@ -45,7 +43,7 @@ window.onload = function() {
  			appendSeconds.innerHTML = seconds;
  			if (seconds === 10) {
  				submitGameResults();
- 				
+ 				clearRound();
  			}
  		}
  		
@@ -55,7 +53,13 @@ function submitGameResults() {
 	var submit = document.getElementById('submitGame');
 	console.log(submit);
 }
-
+function clearRound() {
+	clearInterval(interval);
+	tens = "00";
+	seconds = "00";
+	appendTenths.innerHTML = tens;
+	appendSeconds.innerHTML = seconds;
+}
 
 var responseData;
 var player1words = [];

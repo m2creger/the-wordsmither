@@ -21,9 +21,10 @@ body {
 }
 #header {
 	background-color: #e0e0e0;
-	height: 200px;
+	height: 150px;
 	color: #3f51b5;
 	font-size: 40px;
+	text-align: center;
 }
 #titleArea {
 	background-color: #5ddef4;
@@ -43,5 +44,13 @@ body {
 	height: 200px;
 	display: flex;
   	align-items: center;
-  	justify-content: center
+  	justify-content: center;
+  	background-image: url("words1.jpg");
+
+}
+#scatDice {
+	height: 50px;
+	width: 50px;
+	margin-right: 25px;
+	float: right;
 }
