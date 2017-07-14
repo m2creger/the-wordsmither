@@ -1,59 +1,17 @@
 
-window.addEventListener("load", function() {
+window.addEventListener("load", setupPage) 
+	
+function setupPage() {
 	console.log("All resources finished loading!");
-})
-
-window.onload = function() {
 	setGame();
 
-	var seconds = 00;
-	var tens = 00;
-	var appendTenths = document.getElementById("tens");
-	var appendSeconds = document.getElementById("seconds");
-	var startButton = document.getElementById("startGameButton");
-	var stopButton = document.getElementById("stopGameButton");
-	var newRound = document.getElementById("startNewRound");
-	var interval;
-	startButton.onclick = function() {
-		clearInterval(interval);
-		interval = setInterval(startTimer, 10);
-	}
-	stopButton.onclick = function() {
-		clearInterval(interval);
-	}
-	newRound.onclick = function() {
-		
-	}
-
-	function startTimer() {
-		tens++;
-		if (tens < 9) {
-			appendTenths.innerHTML = "0" + tens;
- 		}
- 		if (tens > 9) {
- 			appendTenths.innerHTML = tens;
- 		}
- 		if (tens > 99) {
- 			console.log("seconds");
- 			seconds++;
- 			appendSeconds.innerHTML = "0" + seconds;
- 			tens = 0;
- 			appendTenths.innerHTML = "0" + 0;
- 		}
- 		if (seconds > 9) {
- 			appendSeconds.innerHTML = seconds;
- 			if (seconds === 10) {
- 				submitGameResults();
- 				clearRound();
- 			}
- 		}
- 		
-	}
 }
-var submit = document.getElementById("submitGame");
-var timer = document.getElementById("timerDigits");
+
+var interval;
 var gameCategories;
 var responseData;
+var seconds = 00;
+var tens = 00;
 var player1words = [];
 var player2words = [];
 var categories = ["Things You Store Items In","Tropical Locations","Game Terms","4-Letter Words","Medicine/Drugs","t.v. Shows","Famous Females","Things You're Allergic To","Musical Instruments","Countries","Athletes","Sandwiches","Offensive Words","Names Used in Songs","Pro Sports Teams","Languages","Appliances","Items in a Catalog","Things You See at the Zoo","Spices/Herbs","Kinds of Candy","Things That Have Stripes","Places in Europe","Articles of Clothing","Stones/Gems","Foreign Cities","Song Titles","Words Associated With Money","Street Names","Things That Use a Remote","Things That Have Wheels","Beers","Things That Grow","Sports Equipment","Things That Can Kill You","Movie Titles","sports", "U.S. cities", "vegetable", "a tool", "a zoo animal", "a fast food item", "an item found inside of a refrigerator", "a type of footwear", "a musical instrument", "something you would find in a garage", "item from a catalog", "a school supply item", "item you may find in an attic", "a kitchen appliance", "a type or item of clothing", "a type of drink or beverage"];
@@ -69,9 +27,48 @@ var cat2input = document.getElementById("playedWord2");
 var cat3input = document.getElementById("playedWord3");
 var cat4input = document.getElementById("playedWord4");
 var cat5input = document.getElementById("playedWord5");
-var cat6input = document.getElementById("playedWord6"); 
+var cat6input = document.getElementById("playedWord6");
+var submit = document.getElementById("submitGame");
+var timer = document.getElementById("timerDigits");
+var timerStart = document.getElementById("startGameButton");
+var timerStop = document.getElementById("stopGameButton");
+var appendTenths = document.getElementById("tens");
+var appendSeconds = document.getElementById("seconds");
 
-submit.addEventListener('click', submitGameResults)
+timerStop.addEventListener('click', stopTimer);
+timerStart.addEventListener('click', startTimer); 
+submit.addEventListener('click', submitGameResults);
+
+function startTimer() {
+	tens++;
+	if (tens < 9) {
+		appendTenths.innerHTML = "0" + tens;
+ 	}
+ 	if (tens > 9) {
+ 		appendTenths.innerHTML = tens;
+ 	}
+ 	if (tens > 99) {
+ 		console.log("seconds");
+ 		seconds++;
+ 		appendSeconds.innerHTML = "0" + seconds;
+ 		tens = 0;
+ 		appendTenths.innerHTML = "0" + 0;
+ 	}
+ 	if (seconds > 9) {
+ 		appendSeconds.innerHTML = seconds;
+ 		if (seconds === 10) {
+ 			submitGameResults();
+ 			clearRound();
+ 		}
+ 	}
+		
+ 		
+}
+
+function clearTimer() {
+	seconds = 00;
+	tens = 00;
+}
 
 function setGame() {
 	console.log("set game called");
@@ -95,7 +92,7 @@ function setCategories() {
 		var rand = Math.floor(Math.random() * categories.length);
 		console.log("categories");
 		catLabels[i].innerHTML = categories[rand];
-		localStorage.setItem('categories', catLabels)
+		localStorage.setItem('categories', catLabels);
 	}
 	
 };
