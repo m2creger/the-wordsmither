@@ -5,6 +5,7 @@ window.addEventListener("load", function() {
 
 window.onload = function() {
 	setGame();
+
 	var seconds = 00;
 	var tens = 00;
 	var appendTenths = document.getElementById("tens");
@@ -54,14 +55,15 @@ var timer = document.getElementById("timerDigits");
 var responseData;
 var player1words = [];
 var player2words = [];
-var categories = ["sports", "U.S. cities", "gemstone", "vegetable", "a tool", "a zoo animal", "a fast food item", "an item found inside of a refrigerator", "a type of footwear", "a musical instrument", "something you would find in a garage", "item from a catalog", "a school supply item", "item you may find in an attic", "a kitchen appliance", "a type or item of clothing", "a type of drink or beverage"];
+var categories = ["Things You Store Items In","Tropical Locations","Game Terms","4-Letter Words","Medicine/Drugs","t.v. Shows","Famous Females","Things You're Allergic To","Musical Instruments","Countries","Athletes","Sandwiches","Offensive Words","Names Used in Songs","Pro Sports Teams","Languages","Appliances","Items in a Catalog","Things You See at the Zoo","Spices/Herbs","Kinds of Candy","Things That Have Stripes","Places in Europe","Articles of Clothing","Stones/Gems","Foreign Cities","Song Titles","Words Associated With Money","Street Names","Things That Use a Remote","Things That Have Wheels","Beers","Things That Grow","Sports Equipment","Things That Can Kill You","Movie Titles","sports", "U.S. cities", "vegetable", "a tool", "a zoo animal", "a fast food item", "an item found inside of a refrigerator", "a type of footwear", "a musical instrument", "something you would find in a garage", "item from a catalog", "a school supply item", "item you may find in an attic", "a kitchen appliance", "a type or item of clothing", "a type of drink or beverage"];
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"];
 var category1; 
 var category2; 
 var category3; 
 var category4; 
 var category5; 
-var category6; 
+var category6;
+var gameCategories; 
 document.getElementById("submitGame").addEventListener("click", function() {
 	console.log("submit clicked")
 });
@@ -82,7 +84,15 @@ function setLetter() {
 	gameLetter.innerHTML = chosenLetter;
 };
 function setCategories() {
-
+	console.log("setting categories");
+	var catLabels = document.getElementsByClassName("catLabels");
+	console.log(catLabels.length);
+	for (var i = 0; i < catLabels.length; i++) {
+		var rand = Math.floor(Math.random() * categories.length);
+		console.log("categories");
+		catLabels[i].innerHTML = categories[rand];
+	}
+	
 };
 
 function updateCategoryResults() {
