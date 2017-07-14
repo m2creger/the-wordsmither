@@ -1,0 +1,24 @@
+.topStrip {
+	background-color: #bb002f;
+	height: 25px;
+}
+#mainHeader {
+	background-color: #f50057;
+	height: 100px;
+}
+.resultsArea {
+	padding: 5px;
+	margin: 5px;
+	color: #3f51b5;
+	background-color: #e0e0e0;
+	text-align: center;
+}
+#player1Results, #player1accept, #player1reject {
+	padding: 5px;
+	margin: 5px;
+}
+.playedWord {
+	text-align: center;
+	padding: 5px;
+	margin: 15px;
+}
