@@ -52,21 +52,24 @@ window.onload = function() {
 }
 var submit = document.getElementById("submitGame");
 var timer = document.getElementById("timerDigits");
+var gameCategories;
 var responseData;
 var player1words = [];
 var player2words = [];
 var categories = ["Things You Store Items In","Tropical Locations","Game Terms","4-Letter Words","Medicine/Drugs","t.v. Shows","Famous Females","Things You're Allergic To","Musical Instruments","Countries","Athletes","Sandwiches","Offensive Words","Names Used in Songs","Pro Sports Teams","Languages","Appliances","Items in a Catalog","Things You See at the Zoo","Spices/Herbs","Kinds of Candy","Things That Have Stripes","Places in Europe","Articles of Clothing","Stones/Gems","Foreign Cities","Song Titles","Words Associated With Money","Street Names","Things That Use a Remote","Things That Have Wheels","Beers","Things That Grow","Sports Equipment","Things That Can Kill You","Movie Titles","sports", "U.S. cities", "vegetable", "a tool", "a zoo animal", "a fast food item", "an item found inside of a refrigerator", "a type of footwear", "a musical instrument", "something you would find in a garage", "item from a catalog", "a school supply item", "item you may find in an attic", "a kitchen appliance", "a type or item of clothing", "a type of drink or beverage"];
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"];
-var category1; 
-var category2; 
-var category3; 
-var category4; 
-var category5; 
-var category6;
-var gameCategories; 
-document.getElementById("submitGame").addEventListener("click", function() {
-	console.log("submit clicked")
-});
+var category1 = document.getElementById("category1Text"); 
+var category2 = document.getElementById("category2Text"); 
+var category3 = document.getElementById("category3Text"); 
+var category4 = document.getElementById("category4Text"); 
+var category5 = document.getElementById("category5Text"); 
+var category6 = document.getElementById("category6Text");
+var cat1input = document.getElementById("playedWord1");
+var cat2input = document.getElementById("playedWord2");
+var cat3input = document.getElementById("playedWord3");
+var cat4input = document.getElementById("playedWord4");
+var cat5input = document.getElementById("playedWord5");
+var cat6input = document.getElementById("playedWord6"); 
 
 submit.addEventListener('click', submitGameResults)
 
@@ -81,6 +84,7 @@ function setLetter() {
 	var chosenLetter = letters[rand];
 	console.log(chosenLetter);
 	var gameLetter = document.getElementById('gameLetter');
+	localStorage.setItem('gameLetter', gameLetter);
 	gameLetter.innerHTML = chosenLetter;
 };
 function setCategories() {
@@ -91,30 +95,20 @@ function setCategories() {
 		var rand = Math.floor(Math.random() * categories.length);
 		console.log("categories");
 		catLabels[i].innerHTML = categories[rand];
+		localStorage.setItem('categories', catLabels)
 	}
 	
 };
 
-function updateCategoryResults() {
-	document.getElementById("playedWord1").innerHTML = category1;
-	document.getElementById("playedWord2").innerHTML = category1;
-	document.getElementById("playedWord3").innerHTML = category1;
-	document.getElementById("playedWord4").innerHTML = category1;
-	document.getElementById("playedWord5").innerHTML = category1;
-	document.getElementById("playedWord6").innerHTML = category1;
-
-}
 function submitGameResults() {
 
-	var submit = document.getElementById('submitGame');
-	category1 = document.getElementById("category1Text").value;
-	category2 = document.getElementById("category2Text").value;
-	category3 = document.getElementById("category3Text").value;
-	category4 = document.getElementById("category4Text").value;
-	category5 = document.getElementById("category5Text").value;
-	category6 = document.getElementById("category6Text").value;
 	window.location = 'results.html'
+	updateResultsPage();
 	console.log(category1);
+}
+function updateResultsPage() {
+	console.log("updating results page");
+	//cat1input.innerText = category1.value;
 }
 function clearRound() {
 	clearInterval(interval);
