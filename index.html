@@ -3,6 +3,7 @@
 <head>
 	<title>The Wordsmither</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" media="screen and (min-width: 315px) and (max-width: 800px)" href="css/style.css"/>
 	
@@ -11,19 +12,18 @@
 	<section>
 		<div class="topStrip"></div>
 		<div id="mainHeader">
-		
-			<button>Invite a friend</button>
-			<button></button>
+			<button id="inviteButton">Invite a friend</button>
+			<h1 id="header">The Wordsmither</h1>
 		</div>
 		<div>
-			<h1>The Wordsmither</h1>
+			
 		</div>
-		<div>
+		<div id="timer">
 			<p id="timerDigits">
 				<span id="seconds">00</span>:<span id="tens">00</span>
 			</p>
 		</div>
-		<div>
+		<div class="stopwatchButtons">
 			<button id="startGameButton" onclick="clearRound()">Start</button>
 			<button id="stopGameButton">Stop</button>
 			<button id="startNewRound">New Round</button>
@@ -57,7 +57,7 @@
 				
 			</form>
 		</div>
-		<div>
+		<div class="submit">
 			<button id="submitGame" onclick="submitGameResults()">Submit</button>
 		</div>
 

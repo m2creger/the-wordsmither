@@ -66,12 +66,12 @@ var player1words = [];
 var player2words = [];
 var categories = ["sports", "U.S. cities", "gemstone", "vegetable", "a tool", "a zoo animal", "a fast food item", "an item found inside of a refrigerator", "a type of footwear", "a musical instrument", "something you would find in a garage", "item from a catalog", "a school supply item", "item you may find in an attic", "a kitchen appliance", "a type or item of clothing", "a type of drink or beverage"];
 var letters = ["A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R, S, T, W"];
-var category1 = document.getElementById("category1Text");
-var category2 = document.getElementById("category2Text");
-var category3 = document.getElementById("category3Text");
-var category4 = document.getElementById("category4Text");
-var category5 = document.getElementById("category5Text");
-var category6 = document.getElementById("category6Text");
+var category1 = document.getElementById("category1Text").value;
+var category2 = document.getElementById("category2Text").value;
+var category3 = document.getElementById("category3Text").value;
+var category4 = document.getElementById("category4Text").value;
+var category5 = document.getElementById("category5Text").value;
+var category6 = document.getElementById("category6Text").value;
 var timer = document.getElementById("timerDigits");
 
 function getDictionaryData() {
