@@ -37,11 +37,13 @@ form {
 }
 .stopwatchButtons {
 	text-align: center;
-	font-size: 20px;
+	font-size: 24px;
+	margin: 5px;
 }
 #submitGame {
 	font-size: 28px;
 }
 .submit {
 	text-align: center;
+	margin-top: 15px;
 }
