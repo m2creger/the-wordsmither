@@ -1,3 +1,5 @@
+
+
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -28,3 +30,12 @@ function hostCreateNewGame() {
 
 }
 */
+var fs = require("fs");
+fs.readFile("words1.txt", function(err, data) {
+	if (err) throw err;
+	var array = data.toString().split(",");
+	for(i in array) {
+		console.log(array[i]);
+	}
+	
+});
