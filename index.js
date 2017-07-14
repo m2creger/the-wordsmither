@@ -4,7 +4,13 @@ var io = require('socket.io')(http);
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
+ 
 });
+/*
+app.configure(function() {
+	app.use(express.static(path.join(__dirname,'public')));
+});
+*/
 
 io.on('connection', function(socket){
   console.log('a user connected');
