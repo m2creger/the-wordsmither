@@ -1,3 +1,4 @@
+
 window.addEventListener("load", function(getDictionaryData) {
 	console.log("All resources finished loading!");
 })
