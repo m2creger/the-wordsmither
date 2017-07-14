@@ -74,9 +74,9 @@ function setLetter() {
 	var rand = Math.floor(Math.random() * 20);
 	console.log(rand);
 	var chosenLetter = letters[rand];
+	localStorage.setItem('chosenLetter', chosenLetter);
 	console.log(chosenLetter);
 	var gameLetter = document.getElementById('gameLetter');
-	localStorage.setItem('gameLetter', gameLetter);
 	gameLetter.innerHTML = chosenLetter;
 };
 function setCategories() {
@@ -86,8 +86,11 @@ function setCategories() {
 	for (var i = 0; i < catLabels.length; i++) {
 		var rand = Math.floor(Math.random() * categories.length);
 		console.log("categories");
-		catLabels[i].innerHTML = categories[rand];
-		localStorage.setItem('categories', catLabels);
+		var catLabel = catLabels[i];
+		catLabel.innerHTML = categories[rand];
+		var catObject = categories[rand];
+		console.log("The cat label is " + catObject);
+		localStorage.setItem('categories', catObject);
 	}
 	
 };
@@ -95,6 +98,7 @@ function setCategories() {
 function submitGameResults() {
 
 	window.location = 'results.html'
+	localStorage.getItem('chosenLetter');
 	updateResultsPage();
 	console.log(category1);
 }
