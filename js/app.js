@@ -3,10 +3,11 @@ window.addEventListener("load", setupPage)
 	
 function setupPage() {
 	console.log("All resources finished loading!");
-	setGame();
+	
 
 }
-
+var timer = 0;
+var seconds = 0;
 var interval;
 var gameCategories;
 var responseData;
@@ -35,11 +36,10 @@ var stopButton = document.getElementById('stop')
 var resetButton = document.getElementById('reset')
 var appendTenths = document.getElementById("tens");
 var secondsLabel = document.getElementById("seconds");
-
+var startGame = document.getElementById('startGame');
 
 submit.addEventListener('click', submitGameResults);
-var timer = 0;
-var seconds = 0;
+startGame.addEventListener('click', setGame);
 
 startButton.addEventListener("click", function () {
 	timer = setInterval(function() {
@@ -104,6 +104,8 @@ function submitGameResults() {
 }
 function updateResultsPage() {
 	console.log("updating results page");
+	var resultCategory = localStorage.getItem('categories')
+	console.log(resultCategory);
 	//cat1input.innerText = category1.value;
 }
 function clearRound() {
