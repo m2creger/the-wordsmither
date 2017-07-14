@@ -21,8 +21,9 @@ body {
 }
 #header {
 	background-color: #e0e0e0;
-	height: 100px;
+	height: 200px;
 	color: #3f51b5;
+	font-size: 40px;
 }
 #titleArea {
 	background-color: #5ddef4;
@@ -30,10 +31,17 @@ body {
 }
 #clickStart {
 	background-color: #3f51b5;
-	height: 50px;
-	width: 150px;
+	width: 300px;
 	color: #e0e0e0;
 	text-decoration: none;
 	border-radius: 5px;
 	text-align: center;
+	font-size: 40px;
+}
+#startArea {
+
+	height: 200px;
+	display: flex;
+  	align-items: center;
+  	justify-content: center
 }

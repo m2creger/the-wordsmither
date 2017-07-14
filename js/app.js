@@ -39,13 +39,24 @@ window.onload = function() {
  			seconds++;
  			appendSeconds.innerHTML = "0" + seconds;
  			tens = 0;
- 			appendTens.innerHTML = "0" + 0;
+ 			appendTenths.innerHTML = "0" + 0;
  		}
  		if (seconds > 9) {
  			appendSeconds.innerHTML = seconds;
+ 			if (seconds === 10) {
+ 				submitGameResults();
+ 				
+ 			}
  		}
+ 		
 	}
 }
+function submitGameResults() {
+	var submit = document.getElementById('submitGame');
+	console.log(submit);
+}
+
+
 var responseData;
 var player1words = [];
 var player2words = [];
@@ -102,5 +113,7 @@ function startTimer() {
 		document.getElementById("startGameButton").innerHTML = count;
 	}
 }
+
+
 
 
