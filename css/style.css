@@ -31,7 +31,7 @@ label, input {
 form {
 	text-align: center;
 }
-#timer {
+#timer, #gameLetter {
 	text-align: center;
 	font-size: 28px;
 }

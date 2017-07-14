@@ -1,11 +1,10 @@
 
-
-window.addEventListener("load", function(getDictionaryData) {
+window.addEventListener("load", function() {
 	console.log("All resources finished loading!");
 })
 
-
 window.onload = function() {
+	setGame();
 	var seconds = 00;
 	var tens = 00;
 	var appendTenths = document.getElementById("tens");
@@ -50,6 +49,41 @@ window.onload = function() {
  		
 	}
 }
+var submit = document.getElementById("submitGame");
+var timer = document.getElementById("timerDigits");
+var responseData;
+var player1words = [];
+var player2words = [];
+var categories = ["sports", "U.S. cities", "gemstone", "vegetable", "a tool", "a zoo animal", "a fast food item", "an item found inside of a refrigerator", "a type of footwear", "a musical instrument", "something you would find in a garage", "item from a catalog", "a school supply item", "item you may find in an attic", "a kitchen appliance", "a type or item of clothing", "a type of drink or beverage"];
+var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"];
+var category1; 
+var category2; 
+var category3; 
+var category4; 
+var category5; 
+var category6; 
+document.getElementById("submitGame").addEventListener("click", function() {
+	console.log("submit clicked")
+});
+
+submit.addEventListener('click', submitGameResults)
+
+function setGame() {
+	console.log("set game called");
+	setLetter();
+	setCategories();
+};
+function setLetter() {
+	var rand = Math.floor(Math.random() * 20);
+	console.log(rand);
+	var chosenLetter = letters[rand];
+	console.log(chosenLetter);
+	var gameLetter = document.getElementById('gameLetter');
+	gameLetter.innerHTML = chosenLetter;
+};
+function setCategories() {
+
+};
 
 function updateCategoryResults() {
 	document.getElementById("playedWord1").innerHTML = category1;
@@ -61,6 +95,7 @@ function updateCategoryResults() {
 
 }
 function submitGameResults() {
+
 	var submit = document.getElementById('submitGame');
 	category1 = document.getElementById("category1Text").value;
 	category2 = document.getElementById("category2Text").value;
@@ -68,6 +103,7 @@ function submitGameResults() {
 	category4 = document.getElementById("category4Text").value;
 	category5 = document.getElementById("category5Text").value;
 	category6 = document.getElementById("category6Text").value;
+	window.location = 'results.html'
 	console.log(category1);
 }
 function clearRound() {
@@ -77,20 +113,6 @@ function clearRound() {
 	appendTenths.innerHTML = tens;
 	appendSeconds.innerHTML = seconds;
 }
-
-var responseData;
-var player1words = [];
-var player2words = [];
-var categories = ["sports", "U.S. cities", "gemstone", "vegetable", "a tool", "a zoo animal", "a fast food item", "an item found inside of a refrigerator", "a type of footwear", "a musical instrument", "something you would find in a garage", "item from a catalog", "a school supply item", "item you may find in an attic", "a kitchen appliance", "a type or item of clothing", "a type of drink or beverage"];
-var letters = ["A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, R, S, T, W"];
-var category1; 
-var category2; 
-var category3; 
-var category4; 
-var category5; 
-var category6; 
-
-var timer = document.getElementById("timerDigits");
 
 function getDictionaryData() {
 	//console.log(this.responseText);
@@ -102,10 +124,6 @@ var newRequest = new XMLHttpRequest();
 newRequest.addEventListener("load", getDictionaryData);
 newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/c?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
 newRequest.send();
-
-function startNewGame() {
-
-};
 
 function parseFromXMLString() {
 	var newParser = new DOMParser();
