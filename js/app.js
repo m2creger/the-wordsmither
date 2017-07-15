@@ -3,9 +3,10 @@ window.addEventListener("load", setupPage)
 	
 function setupPage() {
 	console.log("All resources finished loading!");
-	
 
 }
+/****************** Global Variables ************************/
+
 var timer = 0;
 var seconds = 0;
 var interval;
@@ -38,32 +39,9 @@ var appendTenths = document.getElementById("tens");
 var secondsLabel = document.getElementById("seconds");
 var startGame = document.getElementById('startGame');
 
-submit.addEventListener('click', submitGameResults);
+/*********** Game Setup **************/
+
 startGame.addEventListener('click', setGame);
-
-startButton.addEventListener("click", function () {
-	timer = setInterval(function() {
-		seconds++;
-		setTime();
-		console.log(seconds);
-		if (seconds === 10) {
-			clearInterval(timer);
-			submitGameResults;
-		}
-	}, 1000);
-	
-});
-stopButton.addEventListener("click", function() {
-	clearInterval(timer);
-	timer = null;
-})
-
-function setTime() {
-	secondsLabel.innerHTML = seconds;
-}
-function adjustedTime(val) {
-	console.log("time received");
-}
 
 function setGame() {
 	console.log("set game called");
@@ -95,6 +73,38 @@ function setCategories() {
 	
 };
 
+
+/******** Timer ************/
+
+startButton.addEventListener("click", function () {
+	timer = setInterval(function() {
+		seconds++;
+		setTime();
+		console.log(seconds);
+		if (seconds === 10) {
+			clearInterval(timer);
+			submitGameResults;
+		}
+	}, 1000);
+	
+});
+stopButton.addEventListener("click", function() {
+	clearInterval(timer);
+	timer = null;
+})
+
+function setTime() {
+	secondsLabel.innerHTML = seconds;
+}
+function adjustedTime(val) {
+	console.log("time received");
+}
+
+
+/************** Submit Game Results ****************/
+
+submit.addEventListener('click', submitGameResults);
+
 function submitGameResults() {
 
 	window.location = 'results.html'
@@ -115,6 +125,7 @@ function clearRound() {
 	appendTenths.innerHTML = tens;
 	appendSeconds.innerHTML = seconds;
 }
+/********* Dictionary.com API call ************/
 
 function getDictionaryData() {
 	//console.log(this.responseText);
@@ -144,6 +155,8 @@ function parseFromXMLString() {
 	return nodes;
 	
 };
+
+/********** computer words ***************/
 
 var aWords = ["atelostomia","atemoya","atemporal","aten","atenism","atenist","aterian","ates","atestine","ateuchi","ateuchus","atfalati","athabasca","athabascan","athalamous","athalline","athamantid","athamantin","athamaunte","athanasy","athanasia","athanasian","athanasianism","athanasianist","athanasies","athanor","athapascan","athapaskan","athar","atharvan","athbash","athecae","athecata","athecate","atheism","atheisms","atheist","atheistic","atheistical","atheistically","atheisticalness","atheisticness","atheists","atheize","atheizer","athel","athelia","atheling","athelings","athematic","athena","athenaea","athenaeum","athenaeums","athenee","atheneum","atheneums","athenian","athenianly","athenians","athenor","athens","atheology","atheological","atheologically","atheous","athericera","athericeran","athericerous","atherine","atherinidae","atheriogaea","atheriogaean","atheris","athermancy","athermanous","athermic","athermous","atherogenesis","atherogenic","atheroma","atheromas","atheromasia","atheromata","atheromatosis","atheromatous","atheroscleroses","atherosclerosis","atherosclerotic","atherosclerotically","atherosperma","atherurus","athetesis","atheticize","athetize","athetized","athetizing","athetoid","athetoids","athetosic","athetosis","athetotic","athymy","athymia","athymic","athing","athink","athyreosis","athyria","athyrid","athyridae","athyris","athyrium","athyroid","athyroidism","athyrosis","athirst","athlete","athletehood","athletes","athletic","athletical","athletically","athleticism","athletics","athletism","athletocracy","athlothete","athlothetes","athodyd","athodyds","athogen","athold","athonite","athort","athrepsia","athreptic","athrill","athrive","athrob","athrocyte","athrocytosis","athrogenic","athrong","athrough","athumia","athwart","athwarthawse","athwartship","athwartships","athwartwise","ati","atik","atikokania","atilt","atimy","atimon","ating","atinga","atingle","atinkle","atip","atypy","atypic","atypical","atypicality","atypically","atiptoe","atis","atka","atlanta","atlantad","atlantal","atlantean","atlantes","atlantic","atlantica","atlantid","atlantides","atlantis","atlantite","atlantoaxial","atlantodidymus","atlantomastoid","atlantoodontoid","atlantosaurus","atlas","atlases","atlaslike","atlatl","atlatls","atle","atlee","atli"];
 var bWords = ["bicarbs","bicarbureted","bicarburetted","bicarinate","bicarpellary","bicarpellate","bicaudal","bicaudate","bicched","bice","bicellular","bicentenary","bicentenaries","bicentenarnaries","bicentennial","bicentennially","bicentennials","bicentral","bicentric","bicentrically","bicentricity","bicep","bicephalic","bicephalous","biceps","bicepses","bices","bicetyl","bichy","bichir","bichloride","bichlorides","bichord","bichos","bichromate","bichromated","bichromatic"];
