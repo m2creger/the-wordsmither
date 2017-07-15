@@ -83,6 +83,7 @@ function setCategories() {
 
 function checkWordsClicked() {
 	console.log('hello');
+	localStorage.getItem('chosenLetter');
 };
 
 
