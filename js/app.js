@@ -97,8 +97,9 @@ function setCategories() {
 		var catObject = categories[rand];
 		console.log("The cat label is " + catObject);
 		gameCategories.push(catObject);
-		localStorage.setItem('categories', catObject);
+		
 	}
+	localStorage.setItem('categories', gameCategories);
 	console.log(gameCategories);
 	
 };
@@ -117,41 +118,34 @@ function startTimer() {
 			
 		}
 	}, 1000);
-}
+};
 
 function setTime() {
 	secondsLabel.innerHTML = seconds;
-}
+};
 
 
 /************** Submit Game Results ****************/
 
-
+function updateResultsPage() {
+	localStorage.setItem('category1input', category1);
+	localStorage.setItem('category2input', category2);
+	localStorage.setItem('category3input', category3);
+	localStorage.setItem('category4input', category4);
+	localStorage.setItem('category5input', category5);
+	localStorage.setItem('category6input', category6);
+	submitGameResults();
+};
 
 function submitGameResults() {
 
 	window.location = 'results.html';
-}
-function updateResultsPage() {
-	console.log("updating results page");
-	console.log("the first category is " + gameCategories[0]);
-	category1ResultLabel.innerHTML = gameCategories[0];
-	category2ResultLabel.innerHTML = gameCategories[1];
-	category3ResultLabel.innerHTML = gameCategories[2];
-	category4ResultLabel.innerHTML = gameCategories[3];
-	category5ResultLabel.innerHTML = gameCategories[4];
-	category6ResultLabel.innerHTML = gameCategories[5];
+};
 
-	localStorage.getItem('chosenLetter');
-	var resultCategory = localStorage.getItem('categories')
-	//console.log(resultCategory);
-	//cat1input.innerText = category1.value;
-	//submitGameResults();
-}
 function clearRound() {
 	clearInterval(interval);
 	secondsLabel.innerHTML = 0;
-}
+};
 /********* Dictionary.com API call ************/
 
 function getDictionaryData() {

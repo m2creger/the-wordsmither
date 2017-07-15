@@ -22,3 +22,7 @@
 	padding: 5px;
 	margin: 15px;
 }
+#gameLetter {
+	text-align: center;
+	font-size: 28px;
+}
