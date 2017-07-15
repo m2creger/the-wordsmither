@@ -37,12 +37,7 @@ var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 
 /************** index page variables *********/
 
-var category1 = $("input#cat1Text").val(); 
-var category2 = document.getElementById("category2Text"); 
-var category3 = document.getElementById("category3Text"); 
-var category4 = document.getElementById("category4Text"); 
-var category5 = document.getElementById("category5Text"); 
-var category6 = document.getElementById("category6Text");
+
 
 var submit = document.getElementById("submitGame");
 var timer = document.getElementById("timerDigits");
@@ -112,13 +107,55 @@ function setTime() {
 
 function updateResultsPage() {
 	var category1 = document.getElementById("category1Text");
-	console.log(category1);
-	localStorage.setItem('category1input', JSON.stringify(category1.value));
-	localStorage.setItem('category2input', category2);
-	localStorage.setItem('category3input', category3);
-	localStorage.setItem('category4input', category4);
-	localStorage.setItem('category5input', category5);
-	localStorage.setItem('category6input', category6);
+	var category2 = document.getElementById("category2Text"); 
+	var category3 = document.getElementById("category3Text"); 
+	var category4 = document.getElementById("category4Text"); 
+	var category5 = document.getElementById("category5Text"); 
+	var category6 = document.getElementById("category6Text");
+
+	// Check if user entered anything if not
+	
+	if (category1.value.length === 0) {
+		console.log("im here");
+		localStorage.setItem('category1input', JSON.stringify("nothing entered"));
+	} else {
+
+		localStorage.setItem('category1input', JSON.stringify(category1.value));
+	}
+
+	if (category2.value.length === 0) {
+
+		localStorage.setItem('category2input', JSON.stringify("nothing entered"));
+
+	} else {
+
+		localStorage.setItem('category2input', JSON.stringify(category2.value));
+
+	}
+
+	if (category3.value.length === 0) {
+
+		localStorage.setItem('category3input', JSON.stringify("nothing entered"));
+	} else {
+
+		localStorage.setItem('category3input', JSON.stringify(category3.value));
+	}
+	if (category4.value.length === 0) {
+		localStorage.setItem('category4input', JSON.stringify("nothing entered"));
+	} else {
+		localStorage.setItem('category4input', JSON.stringify(category4.value));
+	}
+	if (category5.value.length === 0) {
+		localStorage.setItem('category5input', JSON.stringify("nothing entered"));
+	} else {
+		localStorage.setItem('category5input', JSON.stringify(category5.value));
+	}
+	if (category6.value.length === 0) {
+		localStorage.setItem('category6input', JSON.stringify("nothing entered"));
+	} else {
+		localStorage.setItem('category6input', JSON.stringify(category6.value));
+	}
+
 	submitGameResults();
 };
 
