@@ -1,16 +1,32 @@
 
-window.addEventListener("load", setupPage) 
-	
-function setupPage() {
-	console.log("All resources finished loading!");
+window.onload = function() {
+	startGame.onclick = function () {
+		console.log("set game called");
+		setLetter();
+		setCategories()
+		startTimer();
+	};
 
-}
+	newGame.onclick = function () {
+		clearRound();
+		setCategories();
+	};
+};
+	
+
 /****************** Global Variables ************************/
+
+var category1;
+var category2;
+var category3;
+var category4;
+var category5;
+var category6;
 
 var timer = 0;
 var seconds = 0;
 var interval;
-var gameCategories;
+var gameCategories = [];
 var responseData;
 var seconds = 00;
 var tens = 00;
@@ -18,18 +34,16 @@ var player1words = [];
 var player2words = [];
 var categories = ["Things You Store Items In","Tropical Locations","Game Terms","4-Letter Words","Medicine/Drugs","t.v. Shows","Famous Females","Things You're Allergic To","Musical Instruments","Countries","Athletes","Sandwiches","Offensive Words","Names Used in Songs","Pro Sports Teams","Languages","Appliances","Items in a Catalog","Things You See at the Zoo","Spices/Herbs","Kinds of Candy","Things That Have Stripes","Places in Europe","Articles of Clothing","Stones/Gems","Foreign Cities","Song Titles","Words Associated With Money","Street Names","Things That Use a Remote","Things That Have Wheels","Beers","Things That Grow","Sports Equipment","Things That Can Kill You","Movie Titles","sports", "U.S. cities", "vegetable", "a tool", "a zoo animal", "a fast food item", "an item found inside of a refrigerator", "a type of footwear", "a musical instrument", "something you would find in a garage", "item from a catalog", "a school supply item", "item you may find in an attic", "a kitchen appliance", "a type or item of clothing", "a type of drink or beverage"];
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "R", "S", "T", "W"];
+
+/************** index page variables *********/
+
 var category1 = document.getElementById("category1Text"); 
 var category2 = document.getElementById("category2Text"); 
 var category3 = document.getElementById("category3Text"); 
 var category4 = document.getElementById("category4Text"); 
 var category5 = document.getElementById("category5Text"); 
 var category6 = document.getElementById("category6Text");
-var cat1input = document.getElementById("playedWord1");
-var cat2input = document.getElementById("playedWord2");
-var cat3input = document.getElementById("playedWord3");
-var cat4input = document.getElementById("playedWord4");
-var cat5input = document.getElementById("playedWord5");
-var cat6input = document.getElementById("playedWord6");
+
 var submit = document.getElementById("submitGame");
 var timer = document.getElementById("timerDigits");
 var startButton = document.getElementById('start'); 
@@ -38,17 +52,30 @@ var resetButton = document.getElementById('reset')
 var appendTenths = document.getElementById("tens");
 var secondsLabel = document.getElementById("seconds");
 var startGame = document.getElementById('startGame');
+var newGame = document.getElementById('reset');
 
-/*********** Game Setup **************/
 
-startGame.addEventListener('click', setGame);
+/**** Results page variables ********/
+var category1ResultLabel = document.getElementById("category1");
+var category2ResultLabel = document.getElementById("category2");
+var category3ResultLabel = document.getElementById("category3");
+var category4ResultLabel = document.getElementById("category4");
+var category5ResultLabel = document.getElementById("category5");
+var category6ResultLabel = document.getElementById("category6");
 
-function setGame() {
-	console.log("set game called");
-	setLetter();
-	setCategories()
-	startTimer();
-};
+var cat1input = document.getElementById("playedWord1");
+var cat2input = document.getElementById("playedWord2");
+var cat3input = document.getElementById("playedWord3");
+var cat4input = document.getElementById("playedWord4");
+var cat5input = document.getElementById("playedWord5");
+var cat6input = document.getElementById("playedWord6");
+
+
+
+
+/*********** Game Setup *************/
+
+
 function setLetter() {
 	var rand = Math.floor(Math.random() * 20);
 	console.log(rand);
@@ -69,8 +96,10 @@ function setCategories() {
 		catLabel.innerHTML = categories[rand];
 		var catObject = categories[rand];
 		console.log("The cat label is " + catObject);
+		gameCategories.push(catObject);
 		localStorage.setItem('categories', catObject);
 	}
+	console.log(gameCategories);
 	
 };
 
@@ -82,53 +111,46 @@ function startTimer() {
 		seconds++;
 		setTime();
 		console.log(seconds);
-		if (seconds === 10) {
+		if (seconds === 5) {
 			clearInterval(timer);
-			submitGameResults();
+			updateResultsPage();
+			
 		}
 	}, 1000);
 }
 
-startButton.addEventListener("click", function () {
-	
-	
-});
-stopButton.addEventListener("click", function() {
-	clearInterval(timer);
-	timer = null;
-})
-
 function setTime() {
 	secondsLabel.innerHTML = seconds;
-}
-function adjustedTime(val) {
-	console.log("time received");
 }
 
 
 /************** Submit Game Results ****************/
 
-submit.addEventListener('click', submitGameResults);
+
 
 function submitGameResults() {
 
-	window.location = 'results.html'
-	localStorage.getItem('chosenLetter');
-	updateResultsPage();
-	console.log(category1);
+	window.location = 'results.html';
 }
 function updateResultsPage() {
 	console.log("updating results page");
+	console.log("the first category is " + gameCategories[0]);
+	category1ResultLabel.innerHTML = gameCategories[0];
+	category2ResultLabel.innerHTML = gameCategories[1];
+	category3ResultLabel.innerHTML = gameCategories[2];
+	category4ResultLabel.innerHTML = gameCategories[3];
+	category5ResultLabel.innerHTML = gameCategories[4];
+	category6ResultLabel.innerHTML = gameCategories[5];
+
+	localStorage.getItem('chosenLetter');
 	var resultCategory = localStorage.getItem('categories')
-	console.log(resultCategory);
+	//console.log(resultCategory);
 	//cat1input.innerText = category1.value;
+	//submitGameResults();
 }
 function clearRound() {
 	clearInterval(interval);
-	tens = "00";
-	seconds = "00";
-	appendTenths.innerHTML = tens;
-	appendSeconds.innerHTML = seconds;
+	secondsLabel.innerHTML = 0;
 }
 /********* Dictionary.com API call ************/
 

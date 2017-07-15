@@ -13,7 +13,7 @@
 		<div class="topStrip"></div>
 		<div id="mainHeader">
 			<button id="inviteButton">Invite a friend</button>
-			<button id="startGame">Start Game</button>
+			
 			<h1 id="header">The Wordsmith</h1>
 		</div>
 		<div>
@@ -25,13 +25,17 @@
 			</p>
 		</div>
 		<div id="gameLetter">N</div>
-		<div class="stopwatchButtons">
-			<button id="start">Start</button>
-			<button id="stop">Stop</button>
-			<button id="reset">New Round</button>
+		<div class="gameButtons">
+			<div class="startButton">
+				<button id="startGame">Start Game</button>
+			</div>
+			<div class="startNewGame">
+				<button id="reset">New Round</button>
+			</div>
+			
 		</div>
 		<div>
-			<form class="form" method="GET">
+			<form name= "playerEntries" class="form" method="GET">
 				<div>
 					<label for="name" class="catLabels">Category 1</label>
 					<input id="category1Text" name="name">
@@ -59,15 +63,14 @@
 				
 			</form>
 		</div>
-		<div class="submit">
-			<button id="submitGame"">Submit</button>
-		</div>
+	
 
 	</div>
 	</section>
 		
 
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
 <!--
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.77.0.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
