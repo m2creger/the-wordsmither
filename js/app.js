@@ -37,7 +37,7 @@ var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 
 /************** index page variables *********/
 
-var category1 = document.getElementById("category1Text"); 
+var category1 = $("input#cat1Text").val(); 
 var category2 = document.getElementById("category2Text"); 
 var category3 = document.getElementById("category3Text"); 
 var category4 = document.getElementById("category4Text"); 
@@ -111,7 +111,9 @@ function setTime() {
 /************** Submit Game Results ****************/
 
 function updateResultsPage() {
-	localStorage.setItem('category1input', category1);
+	var category1 = document.getElementById("category1Text");
+	console.log(category1);
+	localStorage.setItem('category1input', JSON.stringify(category1.value));
 	localStorage.setItem('category2input', category2);
 	localStorage.setItem('category3input', category3);
 	localStorage.setItem('category4input', category4);
