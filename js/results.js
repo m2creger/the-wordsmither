@@ -1,5 +1,14 @@
 window.onload = function() {
 	updateResultsPage();
+	var checkPlayedWord = document.querySelectorAll(".checkPlayedWord");
+	var checkPlayedWord = document.querySelectorAll(".checkPlayedWord");
+	for (var i = 0; i < checkPlayedWord.length; i++) {
+		checkPlayedWord[i].onclick = function () {
+			checkWordsClicked();	
+		}
+	}	
+	
+	
 };
 function updateResultsPage() {
 
@@ -7,22 +16,22 @@ function updateResultsPage() {
 	var retrievedResultCategory = localStorage.getItem("categories");
 	resultCategory = JSON.parse(retrievedResultCategory);
 	var retrievedCat1 = localStorage.getItem('category1input');
-	var oneInput = JSON.parse(retrievedCat1);
+	oneInput = JSON.parse(retrievedCat1);
 	cat1input.innerHTML = oneInput;
 	var retrievedCat2 = localStorage.getItem('category2input');
-	var twoInput = JSON.parse(retrievedCat2);
+	twoInput = JSON.parse(retrievedCat2);
 	cat2input.innerHTML = twoInput;
 	var retrievedCat3 = localStorage.getItem('category3input');
-	var threeInput = JSON.parse(retrievedCat3);
+	threeInput = JSON.parse(retrievedCat3);
 	cat3input.innerHTML = threeInput;
 	var retrievedCat4 = localStorage.getItem('category4input');
-	var fourInput = JSON.parse(retrievedCat4);
+	fourInput = JSON.parse(retrievedCat4);
 	cat4input.innerHTML = fourInput;
 	var retrievedCat5 = localStorage.getItem('category5input');
-	var fiveInput = JSON.parse(retrievedCat4);
+	fiveInput = JSON.parse(retrievedCat4);
 	cat5input.innerHTML = fiveInput;
 	var retrievedCat6 = localStorage.getItem('category6input');
-	var sixInput = JSON.parse(retrievedCat6);
+	sixInput = JSON.parse(retrievedCat6);
 	cat6input.innerHTML = sixInput;
 
 	console.log(resultCategory);
@@ -34,6 +43,14 @@ function updateResultsPage() {
 
 
 /**** Results page variables ********/
+var oneInput;
+var twoInput;
+var threeInput;
+var fourInput;
+var fiveInput;
+var sixInput;
+
+
 
 var resultCategory = [];
 var categories = document.getElementsByClassName("categories");
@@ -62,6 +79,10 @@ function setCategories() {
 	category6ResultLabel.innerHTML = resultCategory[5];
 
 	
+};
+
+function checkWordsClicked() {
+	console.log('hello');
 };
 
 
