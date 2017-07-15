@@ -46,7 +46,8 @@ startGame.addEventListener('click', setGame);
 function setGame() {
 	console.log("set game called");
 	setLetter();
-	setCategories();
+	setCategories()
+	startTimer();
 };
 function setLetter() {
 	var rand = Math.floor(Math.random() * 20);
@@ -76,16 +77,20 @@ function setCategories() {
 
 /******** Timer ************/
 
-startButton.addEventListener("click", function () {
+function startTimer() {
 	timer = setInterval(function() {
 		seconds++;
 		setTime();
 		console.log(seconds);
 		if (seconds === 10) {
 			clearInterval(timer);
-			submitGameResults;
+			submitGameResults();
 		}
 	}, 1000);
+}
+
+startButton.addEventListener("click", function () {
+	
 	
 });
 stopButton.addEventListener("click", function() {
