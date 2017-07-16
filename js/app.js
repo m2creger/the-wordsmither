@@ -1,5 +1,6 @@
 
 window.onload = function() {
+	setScores();
 	startGame.onclick = function () {
 		console.log("set game called");
 		setLetter();
@@ -48,7 +49,8 @@ var appendTenths = document.getElementById("tens");
 var secondsLabel = document.getElementById("seconds");
 var startGame = document.getElementById('startGame');
 var newGame = document.getElementById('reset');
-
+var player1Score = document.getElementById('score1');
+var computerScore = document.getElementById('scoreComputer');
 
 
 /*********** Game Setup *************/
@@ -58,8 +60,8 @@ function setLetter() {
 	var rand = Math.floor(Math.random() * 20);
 	console.log(rand);
 	var chosenLetter = letters[rand];
-	localStorage.setItem('chosenLetter', "A");
-	//localStorage.setItem('chosenLetter', JSON.stringify(chosenLetter));
+	
+	localStorage.setItem('chosenLetter', JSON.stringify(chosenLetter));
 	
 	console.log(chosenLetter);
 	var gameLetter = document.getElementById('gameLetter');
@@ -82,6 +84,16 @@ function setCategories() {
 	localStorage.setItem('categories', JSON.stringify(gameCategories));
 	console.log(gameCategories);
 	
+};
+
+function setScores() {
+	var compScore = localStorage.getItem('computerScore');
+	var p1Score = localStorage.getItem('player1Score');
+	console.log(compScore);
+	console.log(p1Score);
+	computerScore.innerHTML = compScore;
+	player1Score.innerHTML = p1Score;
+
 };
 
 
@@ -170,37 +182,6 @@ function clearRound() {
 	clearInterval(interval);
 	secondsLabel.innerHTML = 0;
 };
-/********* Dictionary.com API call ************/
-
-function getDictionaryData() {
-	//console.log(this.responseText);
-	responseData = this.responseText;
-	parseFromXMLString();
-};
-
-var newRequest = new XMLHttpRequest();
-newRequest.addEventListener("load", getDictionaryData);
-newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/c?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
-newRequest.send();
-
-function parseFromXMLString() {
-	var newParser = new DOMParser();
-	var data = newParser.parseFromString(responseData, "text/xml");
-	console.log(data);
-	var parsedData = data.getElementsByTagName("dt");
-	var nodes = [];
-	var text;
-	for (var i = 0; i < parsedData.length; i++) {
-		console.log(parsedData[i]);
-		text = parsedData[i].childNodes[0].nodeValue;
-		console.log(text);
-		nodes.push(text);
-	}
-	console.log(nodes);
-	return nodes;
-	
-};
-
 
 
 

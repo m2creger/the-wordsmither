@@ -7,10 +7,48 @@ window.onload = function() {
 		checkPlayedWord[i].onclick = function () {
 			checkWordsClicked();	
 		}
-	}	
+	}
+	submitScore.onclick = function() {
+		submitScores();
+	};	
 	
 	
 };
+
+/**** Results page variables ********/
+var oneInput;
+var twoInput;
+var threeInput;
+var fourInput;
+var fiveInput;
+var sixInput;
+var chosenLetter;
+
+var player1Score = 0;
+var computerScore = 0;
+var computerResultsArray = [];
+var resultCategory = [];
+var categories = document.getElementsByClassName("categories");
+var letter = document.getElementById('gameLetter');
+var category1ResultLabel = document.getElementsByClassName("category1");
+var category2ResultLabel = document.getElementsByClassName("category2");
+var category3ResultLabel = document.getElementsByClassName("category3");
+var category4ResultLabel = document.getElementsByClassName("category4");
+var category5ResultLabel = document.getElementsByClassName("category5");
+var category6ResultLabel = document.getElementsByClassName("category6");
+var computerResults = document.getElementsByClassName("computerPlayedWord");
+var cat1input = document.getElementById("playedWord1");
+var cat2input = document.getElementById("playedWord2");
+var cat3input = document.getElementById("playedWord3");
+var cat4input = document.getElementById("playedWord4");
+var cat5input = document.getElementById("playedWord5");
+var cat6input = document.getElementById("playedWord6");
+var player1AcceptedWords = document.getElementsByClassName('player1accept');
+var computerAcceptedWords = document.getElementsByClassName('computerAccept');
+var submitScore = document.getElementById('submitScores');
+
+/********* Helper Functions ************/
+
 function updateResultsPage() {
 
 	var retrievedResultCategory = localStorage.getItem("categories");
@@ -42,11 +80,11 @@ function updateResultsPage() {
 };
 
 function updateChosenLetter() {
-	//var retrievedRetrievedLetter = localStorage.getItem('chosenLetter');
-	// chosenLetter = JSON.parse(chosenLetter);
-	chosenLetter = localStorage.getItem('chosenLetter');
-	//chosenLetter = JSON.parse(retrievedRetrievedLetter);
-	//letter.innerHTML = retrievedRetrievedLetter;
+	var retrievedRetrievedLetter = localStorage.getItem('chosenLetter');
+	//chosenLetter = JSON.parse(chosenLetter);
+	
+	chosenLetter = JSON.parse(retrievedRetrievedLetter);
+	letter.innerHTML = retrievedRetrievedLetter;
 	console.log(chosenLetter);
 	updateComputerResults();
 };
@@ -63,100 +101,190 @@ function updateComputerResults() {
 			break;
 		case "B":
 			console.log("I'm Here B!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * bWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = bWords[rand];
+			}
 			break;
 		case "C":
 			console.log("I'm Here C!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * cWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = cWords[rand];
+			}
 			break;
 		case "D":
 			console.log("I'm Here D!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * dWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = dWords[rand];
+			}
 			break;
 		case "E":
 			console.log("I'm Here E!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * eWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = eWords[rand];
+			}
 			break;
 		case "F":
 			console.log("I'm Here F!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * fWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = fWords[rand];
+			}
 			break;
 		case "G":
 			console.log("I'm Here G!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * gWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = gWords[rand];
+			}
 			break;
 		case "H":
 			console.log("I'm Here H!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * hWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = hWords[rand];
+			}
 			break;
 		case "I":
 			console.log("I'm Here I!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * iWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = iWords[rand];
+			}
 			break;
 		case "J":
 			console.log("I'm HereJ!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * jWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = jWords[rand];
+			}
 			break;
 		case "K":
 			console.log("I'm HereK!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * kWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = kWords[rand];
+			}
 			break;
 		case "L":
 			console.log("I'm HereL!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * lWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = lWords[rand];
+			}
 			break;
 		case "M":
 			console.log("I'm HereM!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * mWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = mWords[rand];
+			}
 			break;
 		case "N":
 			console.log("I'm HereN!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * nWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = nWords[rand];
+			}
 			break;
 		case "O":
 			console.log("I'm HereO!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * oWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = oWords[rand];
+			}
 			break;
 		case "P":
 			console.log("I'm HereP!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * pWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = pWords[rand];
+			}
 			break;
 		case "R":
 			console.log("I'm HereR!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * rWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = rWords[rand];
+			}
 			break;
 		case "S":
 			console.log("I'm HereS!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * sWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = sWords[rand];
+			}
 			break;
 		case "T":
 			console.log("I'm HereT!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * tWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = tWords[rand];
+			}
 			break;
 		case "W":
 			console.log("I'm HereW!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * wWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = wWords[rand];
+			}
 			break;
 		default: 
 			break;
 	}
 }
 
+function submitScores() {
+	for(var i = 0; i < player1AcceptedWords.length; i++) {
+		if (player1AcceptedWords[i].checked) {
+			console.log('checking scores');
+			player1Score++;
+			break;
+		}
+	}
+	console.log(player1Score);
+	for (var i = 0; i < computerAcceptedWords.length; i++) {
+		if (computerAcceptedWords[i].checked) {
+			console.log("checking scores");
+			computerScore++;
+			break;
+		}
+	}
+	localStorage.setItem('player1Score', player1Score);
+	localStorage.setItem('computerScore', computerScore);
 
-/**** Results page variables ********/
-var oneInput;
-var twoInput;
-var threeInput;
-var fourInput;
-var fiveInput;
-var sixInput;
-var chosenLetter;
+	window.location = 'index.html';
+}
 
 
-var computerResultsArray = [];
-var resultCategory = [];
-var categories = document.getElementsByClassName("categories");
-var letter = document.getElementById('gameLetter');
-var category1ResultLabel = document.getElementsByClassName("category1");
-var category2ResultLabel = document.getElementsByClassName("category2");
-var category3ResultLabel = document.getElementsByClassName("category3");
-var category4ResultLabel = document.getElementsByClassName("category4");
-var category5ResultLabel = document.getElementsByClassName("category5");
-var category6ResultLabel = document.getElementsByClassName("category6");
-var computerResults = document.getElementsByClassName("computerPlayedWord");
-var cat1input = document.getElementById("playedWord1");
-var cat2input = document.getElementById("playedWord2");
-var cat3input = document.getElementById("playedWord3");
-var cat4input = document.getElementById("playedWord4");
-var cat5input = document.getElementById("playedWord5");
-var cat6input = document.getElementById("playedWord6");
 
 
 function setCategories() {
 	for (var i = 0; i < category1ResultLabel.length; i++) {
 		var catResultLabel = category1ResultLabel[i];
-		cat1resultLabel.innerHTML = resultCategory[0];
+		catResultLabel.innerHTML = resultCategory[0];
 	}
 	for (var i = 0; i < category2ResultLabel.length; i++) {
 		var catResultLabel = category2ResultLabel[i];
@@ -183,8 +311,42 @@ function setCategories() {
 
 function checkWordsClicked() {
 	console.log('hello');
-	localStorage.getItem('chosenLetter');
+	
 };
+
+/********* Dictionary.com API call ************/
+
+/*
+function getDictionaryData() {
+	//console.log(this.responseText);
+	responseData = this.responseText;
+	parseFromXMLString();
+};
+
+var newRequest = new XMLHttpRequest();
+newRequest.addEventListener("load", getDictionaryData);
+newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/c?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
+newRequest.send();
+
+function parseFromXMLString() {
+	var newParser = new DOMParser();
+	var data = newParser.parseFromString(responseData, "text/xml");
+	console.log(data);
+	var parsedData = data.getElementsByTagName("dt");
+	var nodes = [];
+	var text;
+	for (var i = 0; i < parsedData.length; i++) {
+		console.log(parsedData[i]);
+		text = parsedData[i].childNodes[0].nodeValue;
+		console.log(text);
+		nodes.push(text);
+	}
+	console.log(nodes);
+	return nodes;
+	
+};
+
+*/
 
 
 
