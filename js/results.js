@@ -42,10 +42,11 @@ function updateResultsPage() {
 };
 
 function updateChosenLetter() {
-	var retrievedRetrievedLetter = localStorage.getItem('chosenLetter');
+	//var retrievedRetrievedLetter = localStorage.getItem('chosenLetter');
 	// chosenLetter = JSON.parse(chosenLetter);
-	chosenLetter = JSON.parse(retrievedRetrievedLetter);
-	letter.innerHTML = retrievedRetrievedLetter;
+	chosenLetter = localStorage.getItem('chosenLetter');
+	//chosenLetter = JSON.parse(retrievedRetrievedLetter);
+	//letter.innerHTML = retrievedRetrievedLetter;
 	console.log(chosenLetter);
 	updateComputerResults();
 };
@@ -54,6 +55,11 @@ function updateComputerResults() {
 	switch (chosenLetter) {
 		case "A":
 			console.log("I'm Here A!!!!!");
+			for (var i = 0; i < computerResults.length; i++) {
+				var rand = Math.floor(Math.random() * aWords.length);
+				var compResult = computerResults.item(i);
+				compResult.innerHTML = aWords[rand];
+			}
 			break;
 		case "B":
 			console.log("I'm Here B!!!!!");
@@ -128,17 +134,17 @@ var sixInput;
 var chosenLetter;
 
 
-
+var computerResultsArray = [];
 var resultCategory = [];
 var categories = document.getElementsByClassName("categories");
 var letter = document.getElementById('gameLetter');
-var category1ResultLabel = document.getElementById("category1");
-var category2ResultLabel = document.getElementById("category2");
-var category3ResultLabel = document.getElementById("category3");
-var category4ResultLabel = document.getElementById("category4");
-var category5ResultLabel = document.getElementById("category5");
-var category6ResultLabel = document.getElementById("category6");
-
+var category1ResultLabel = document.getElementsByClassName("category1");
+var category2ResultLabel = document.getElementsByClassName("category2");
+var category3ResultLabel = document.getElementsByClassName("category3");
+var category4ResultLabel = document.getElementsByClassName("category4");
+var category5ResultLabel = document.getElementsByClassName("category5");
+var category6ResultLabel = document.getElementsByClassName("category6");
+var computerResults = document.getElementsByClassName("computerPlayedWord");
 var cat1input = document.getElementById("playedWord1");
 var cat2input = document.getElementById("playedWord2");
 var cat3input = document.getElementById("playedWord3");
@@ -148,14 +154,31 @@ var cat6input = document.getElementById("playedWord6");
 
 
 function setCategories() {
-	category1ResultLabel.innerHTML = resultCategory[0];
-	category2ResultLabel.innerHTML = resultCategory[1];
-	category3ResultLabel.innerHTML = resultCategory[2];
-	category4ResultLabel.innerHTML = resultCategory[3];
-	category5ResultLabel.innerHTML = resultCategory[4];
-	category6ResultLabel.innerHTML = resultCategory[5];
+	for (var i = 0; i < category1ResultLabel.length; i++) {
+		var catResultLabel = category1ResultLabel[i];
+		cat1resultLabel.innerHTML = resultCategory[0];
+	}
+	for (var i = 0; i < category2ResultLabel.length; i++) {
+		var catResultLabel = category2ResultLabel[i];
+		catResultLabel.innerHTML = resultCategory[0];
+	}
+	for (var i = 0; i < category3ResultLabel.length; i++) {
+		var catResultLabel = category3ResultLabel[i];
+		catResultLabel.innerHTML = resultCategory[2];
+	}
+	for (var i = 0; i < category4ResultLabel.length; i++) {
+		var catResultLabel = category4ResultLabel[i];
+		catResultLabel.innerHTML = resultCategory[3];
+	}
+	for (var i = 0; i < category5ResultLabel.length; i++) {
+		var catResultLabel = category5ResultLabel[i];
+		catResultLabel.innerHTML = resultCategory[4];
+	}
+	for (var i = 0; i < category6ResultLabel.length; i++) {
+		var catResultLabel = category6ResultLabel[i];
+		catResultLabel.innerHTML = resultCategory[5];
+	}
 
-	
 };
 
 function checkWordsClicked() {
