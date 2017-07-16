@@ -2,12 +2,15 @@ window.onload = function() {
 	updateChosenLetter();
 	updateResultsPage();
 	retrieveScores();
-	var checkPlayedWord = document.querySelectorAll(".checkPlayedWord");
+	var checkPlayedWord = document.getElementsByClassName("checkPlayedWord");
 	
 	for (var i = 0; i < checkPlayedWord.length; i++) {
+		console.log("the checked played word is " + checkPlayedWord[i]);
 		checkPlayedWord[i].onclick = function () {
-			checkWordsClicked();
-			defModal.style.display = "block";	
+			console.log(this);
+			checkWordsClicked(this);
+
+				
 		}
 	}
 	submitScore.onclick = function() {
@@ -342,8 +345,27 @@ function setCategories() {
 
 };
 
-function checkWordsClicked() {
-	console.log('hello');
+function checkWordsClicked(wordElement) {
+	//console.log('hello');
+
+	var checkButtonClicked = wordElement.id;
+	console.log("check button clicked is " + checkButtonClicked);
+	switch (checkButtonClicked) {
+		case checkPlayedWord1:
+		case checkPlayedWord2:
+		case checkPlayedWord3:
+		case checkPlayedWord4:
+		case checkPlayedWord5:
+		case checkPlayedWord6:
+		case computerPlayedWord1:
+		case computerPlayedWord2:
+		case computerPlayedWord3:
+		case computerPlayedWord4:
+		case computerPlayedWord5:
+		case computerPlayedWord6:
+
+	}
+	defModal.style.display = "block";
 	
 };
 
