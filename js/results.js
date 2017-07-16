@@ -1,17 +1,26 @@
 window.onload = function() {
 	updateChosenLetter();
 	updateResultsPage();
+	retrieveScores();
 	var checkPlayedWord = document.querySelectorAll(".checkPlayedWord");
-	var checkPlayedWord = document.querySelectorAll(".checkPlayedWord");
+	
 	for (var i = 0; i < checkPlayedWord.length; i++) {
 		checkPlayedWord[i].onclick = function () {
-			checkWordsClicked();	
+			checkWordsClicked();
+			defModal.style.display = "block";	
 		}
 	}
 	submitScore.onclick = function() {
 		submitScores();
 	};	
-	
+	modalClose.onclick = function() {
+		defModal.style.display = "none";
+	}
+	window.onclick = function(event) {
+		if (event.target == defModal) {
+			defModal.style.display = "none";
+		}
+	}
 	
 };
 
@@ -46,6 +55,8 @@ var cat6input = document.getElementById("playedWord6");
 var player1AcceptedWords = document.getElementsByClassName('player1accept');
 var computerAcceptedWords = document.getElementsByClassName('computerAccept');
 var submitScore = document.getElementById('submitScores');
+var modalClose = document.getElementsByClassName("close")[0];
+var defModal = document.getElementById("definitionModal");
 
 /********* Helper Functions ************/
 
@@ -88,6 +99,28 @@ function updateChosenLetter() {
 	console.log(chosenLetter);
 	updateComputerResults();
 };
+
+function retrieveScores() {
+	console.log("retrieving scores");
+	var retrievedCompScore = sessionStorage.getItem('computerScore');
+	console.log("The retrieved computer score is " + retrievedCompScore);
+	var retrievedPlayer1Score = sessionStorage.getItem('player1Score');
+	console.log("The retrieved player 1 score is " + retrievedPlayer1Score);
+	if (retrievedPlayer1Score == null || retrievedPlayer1Score == "null" || retrievedPlayer1Score == NaN || retrievedPlayer1Score =="NaN"){
+      console.log("Setting scores for player1");
+      player1Score = 0;
+    } else {
+      player1Score = parseInt(retrievedPlayer1Score);
+    }
+    if (retrievedCompScore == null || retrievedCompScore == "null" || retrievedCompScore == NaN || retrievedCompScore =="NaN"){
+ 		computerScore = 0;
+    } else {
+      computerScore = parseInt(retrievedCompScore);
+    }
+    console.log("Retrieved player 1 Score is " + player1Score);
+    console.log("retrieved computer score is " + computerScore);
+
+}
 
 function updateComputerResults() {
 	switch (chosenLetter) {
@@ -260,20 +293,20 @@ function submitScores() {
 	for(var i = 0; i < player1AcceptedWords.length; i++) {
 		if (player1AcceptedWords[i].checked) {
 			console.log('checking scores');
-			player1Score++;
-			break;
+			player1Score += 1;
+		
 		}
 	}
 	console.log(player1Score);
 	for (var i = 0; i < computerAcceptedWords.length; i++) {
 		if (computerAcceptedWords[i].checked) {
 			console.log("checking scores");
-			computerScore++;
-			break;
+			computerScore += 1;
+	
 		}
 	}
-	localStorage.setItem('player1Score', player1Score);
-	localStorage.setItem('computerScore', computerScore);
+	sessionStorage.setItem('player1Score', player1Score);
+	sessionStorage.setItem('computerScore', computerScore);
 
 	window.location = 'index.html';
 }
@@ -288,7 +321,7 @@ function setCategories() {
 	}
 	for (var i = 0; i < category2ResultLabel.length; i++) {
 		var catResultLabel = category2ResultLabel[i];
-		catResultLabel.innerHTML = resultCategory[0];
+		catResultLabel.innerHTML = resultCategory[1];
 	}
 	for (var i = 0; i < category3ResultLabel.length; i++) {
 		var catResultLabel = category3ResultLabel[i];

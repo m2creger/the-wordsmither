@@ -49,8 +49,8 @@ var appendTenths = document.getElementById("tens");
 var secondsLabel = document.getElementById("seconds");
 var startGame = document.getElementById('startGame');
 var newGame = document.getElementById('reset');
-var player1Score = document.getElementById('score1');
-var computerScore = document.getElementById('scoreComputer');
+var player1ScoreLabel = document.getElementById('score1');
+var computerScoreLabel = document.getElementById('scoreComputer');
 
 
 /*********** Game Setup *************/
@@ -87,12 +87,23 @@ function setCategories() {
 };
 
 function setScores() {
-	var compScore = localStorage.getItem('computerScore');
-	var p1Score = localStorage.getItem('player1Score');
-	console.log(compScore);
-	console.log(p1Score);
-	computerScore.innerHTML = compScore;
-	player1Score.innerHTML = p1Score;
+	console.log("setting scores");
+	var retrievedCompScore = sessionStorage.getItem('computerScore');
+	console.log("The retrieved computer score is " + retrievedCompScore);
+	var retrievedPlayer1Score = sessionStorage.getItem('player1Score');
+	console.log("The retrieved player 1 score is " + retrievedPlayer1Score);
+	if (retrievedPlayer1Score == null || retrievedPlayer1Score == "null" || retrievedCompScore == NaN || retrievedCompScore =="NaN"){
+      console.log("Setting scores");
+      player1Score = 0;
+      computerScore = 0;
+    } else {
+      computerScore = parseInt(retrievedCompScore);
+      player1Score = parseInt(retrievedPlayer1Score);
+    }
+	console.log(player1Score);
+	console.log(computerScore);
+	computerScoreLabel.innerHTML = computerScore;
+	player1ScoreLabel.innerHTML = player1Score;
 
 };
 
