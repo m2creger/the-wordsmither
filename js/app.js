@@ -58,7 +58,8 @@ function setLetter() {
 	var rand = Math.floor(Math.random() * 20);
 	console.log(rand);
 	var chosenLetter = letters[rand];
-	localStorage.setItem('chosenLetter', chosenLetter);
+	localStorage.setItem('chosenLetter', JSON.stringify(chosenLetter));
+	
 	console.log(chosenLetter);
 	var gameLetter = document.getElementById('gameLetter');
 	gameLetter.innerHTML = chosenLetter;

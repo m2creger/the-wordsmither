@@ -1,4 +1,5 @@
 window.onload = function() {
+	updateChosenLetter();
 	updateResultsPage();
 	var checkPlayedWord = document.querySelectorAll(".checkPlayedWord");
 	var checkPlayedWord = document.querySelectorAll(".checkPlayedWord");
@@ -12,7 +13,6 @@ window.onload = function() {
 };
 function updateResultsPage() {
 
-	localStorage.getItem('chosenLetter');
 	var retrievedResultCategory = localStorage.getItem("categories");
 	resultCategory = JSON.parse(retrievedResultCategory);
 	var retrievedCat1 = localStorage.getItem('category1input');
@@ -41,6 +41,82 @@ function updateResultsPage() {
 	//submitGameResults();
 };
 
+function updateChosenLetter() {
+	var retrievedRetrievedLetter = localStorage.getItem('chosenLetter');
+	// chosenLetter = JSON.parse(chosenLetter);
+	chosenLetter = JSON.parse(retrievedRetrievedLetter);
+	letter.innerHTML = retrievedRetrievedLetter;
+	console.log(chosenLetter);
+	updateComputerResults();
+};
+
+function updateComputerResults() {
+	switch (chosenLetter) {
+		case "A":
+			console.log("I'm Here!!!!!");
+			break;
+		case "B":
+			console.log("I'm Here!!!!!");
+			break;
+		case "C":
+			console.log("I'm Here!!!!!");
+			break;
+		case "D":
+			console.log("I'm Here!!!!!");
+			break;
+		case "E":
+			console.log("I'm Here!!!!!");
+			break;
+		case "F":
+			console.log("I'm Here!!!!!");
+			break;
+		case "G":
+			console.log("I'm Here!!!!!");
+			break;
+		case "H":
+			console.log("I'm Here!!!!!");
+			break;
+		case "I":
+			console.log("I'm Here!!!!!");
+			break;
+		case "J":
+			console.log("I'm Here!!!!!");
+			break;
+		case "K":
+			console.log("I'm Here!!!!!");
+			break;
+		case "L":
+			console.log("I'm Here!!!!!");
+			break;
+		case "M":
+			console.log("I'm Here!!!!!");
+			break;
+		case "N":
+			console.log("I'm Here!!!!!");
+			break;
+		case "O":
+			console.log("I'm Here!!!!!");
+			break;
+		case "P":
+			console.log("I'm Here!!!!!");
+			break;
+		case "R":
+			console.log("I'm Here!!!!!");
+			break;
+		case "S":
+			console.log("I'm Here!!!!!");
+			break;
+		case "T":
+			console.log("I'm Here!!!!!");
+			break;
+		case "W":
+			console.log("I'm Here!!!!!");
+			break;
+		default: 
+			break;
+	}
+}
+
 
 /**** Results page variables ********/
 var oneInput;
@@ -49,12 +125,13 @@ var threeInput;
 var fourInput;
 var fiveInput;
 var sixInput;
+var chosenLetter;
 
 
 
 var resultCategory = [];
 var categories = document.getElementsByClassName("categories");
-
+var letter = document.getElementById('gameLetter');
 var category1ResultLabel = document.getElementById("category1");
 var category2ResultLabel = document.getElementById("category2");
 var category3ResultLabel = document.getElementById("category3");
