@@ -53,64 +53,64 @@ function updateChosenLetter() {
 function updateComputerResults() {
 	switch (chosenLetter) {
 		case "A":
-			console.log("I'm Here!!!!!");
+			console.log("I'm Here A!!!!!");
 			break;
 		case "B":
-			console.log("I'm Here!!!!!");
+			console.log("I'm Here B!!!!!");
 			break;
 		case "C":
-			console.log("I'm Here!!!!!");
+			console.log("I'm Here C!!!!!");
 			break;
 		case "D":
-			console.log("I'm Here!!!!!");
+			console.log("I'm Here D!!!!!");
 			break;
 		case "E":
-			console.log("I'm Here!!!!!");
+			console.log("I'm Here E!!!!!");
 			break;
 		case "F":
-			console.log("I'm Here!!!!!");
+			console.log("I'm Here F!!!!!");
 			break;
 		case "G":
-			console.log("I'm Here!!!!!");
+			console.log("I'm Here G!!!!!");
 			break;
 		case "H":
-			console.log("I'm Here!!!!!");
+			console.log("I'm Here H!!!!!");
 			break;
 		case "I":
-			console.log("I'm Here!!!!!");
+			console.log("I'm Here I!!!!!");
 			break;
 		case "J":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereJ!!!!!");
 			break;
 		case "K":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereK!!!!!");
 			break;
 		case "L":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereL!!!!!");
 			break;
 		case "M":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereM!!!!!");
 			break;
 		case "N":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereN!!!!!");
 			break;
 		case "O":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereO!!!!!");
 			break;
 		case "P":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereP!!!!!");
 			break;
 		case "R":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereR!!!!!");
 			break;
 		case "S":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereS!!!!!");
 			break;
 		case "T":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereT!!!!!");
 			break;
 		case "W":
-			console.log("I'm Here!!!!!");
+			console.log("I'm HereW!!!!!");
 			break;
 		default: 
 			break;
