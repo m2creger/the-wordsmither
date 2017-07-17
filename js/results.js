@@ -10,6 +10,8 @@ window.onload = function() {
 			console.log(this);
 			checkWordsClicked(this);
 
+
+			
 				
 		}
 	}
@@ -35,6 +37,7 @@ var fourInput;
 var fiveInput;
 var sixInput;
 var chosenLetter;
+var wordBeingChecked;
 
 var player1Score = 0;
 var computerScore = 0;
@@ -351,27 +354,78 @@ function checkWordsClicked(wordElement) {
 	var checkButtonClicked = wordElement.id;
 	console.log("check button clicked is " + checkButtonClicked);
 	switch (checkButtonClicked) {
-		case checkPlayedWord1:
-		case checkPlayedWord2:
-		case checkPlayedWord3:
-		case checkPlayedWord4:
-		case checkPlayedWord5:
-		case checkPlayedWord6:
-		case computerPlayedWord1:
-		case computerPlayedWord2:
-		case computerPlayedWord3:
-		case computerPlayedWord4:
-		case computerPlayedWord5:
-		case computerPlayedWord6:
+
+		case "checkPlayedWord1":
+			var playedWord = cat1input.innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		case "checkPlayedWord2":
+			var playedWord = cat2input.innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		case "checkPlayedWord3":
+			var playedWord = cat3input.innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		case "checkPlayedWord4":
+			var playedWord = cat4input.innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		case "checkPlayedWord5":
+			var playedWord = cat5input.innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		case "checkPlayedWord6":
+			var playedWord = cat6input.innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		case "computerPlayedWord1":
+			var playedWord = document.getElementById("compWord1").innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(wordBeingChecked);
+			break;
+		case "computerPlayedWord2":
+			var playedWord = document.getElementById("compWord2").innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		case "computerPlayedWord3":
+			var playedWord = document.getElementById("compWord3").innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		case "computerPlayedWord4":
+			var playedWord = document.getElementById("compWord4").innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		case "computerPlayedWord5":
+			var playedWord = document.getElementById("compWord5").innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		case "computerPlayedWord6":
+			var playedWord = document.getElementById("compWord6").innerHTML;
+			wordBeingChecked = JSON.stringify(playedWord);
+			console.log(playedWord);
+			break;
+		default:
+			break;
 
 	}
+	console.log(wordBeingChecked);
+	getDictionaryData();
 	defModal.style.display = "block";
 	
 };
 
 /********* Dictionary.com API call ************/
-
-/*
 function getDictionaryData() {
 	//console.log(this.responseText);
 	responseData = this.responseText;
@@ -380,7 +434,7 @@ function getDictionaryData() {
 
 var newRequest = new XMLHttpRequest();
 newRequest.addEventListener("load", getDictionaryData);
-newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/c?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
+newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + wordBeingChecked + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
 newRequest.send();
 
 function parseFromXMLString() {
@@ -398,11 +452,8 @@ function parseFromXMLString() {
 	}
 	console.log(nodes);
 	return nodes;
-	
+				
 };
-
-*/
-
 
 
 /********** computer words ***************/
