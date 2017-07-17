@@ -8,8 +8,8 @@ window.onload = function() {
 		console.log("the checked played word is " + checkPlayedWord[i]);
 		checkPlayedWord[i].onclick = function () {
 			console.log(this);
-			checkWordsClicked(this);
-
+			checkWordsClicked(this, getDictionaryData);
+			
 				
 		}
 	}
@@ -65,6 +65,7 @@ var submitScore = document.getElementById('submitScores');
 var modalClose = document.getElementsByClassName("close")[0];
 var defModal = document.getElementById("definitionModal");
 var playAgain = document.getElementById("playAgain");
+var url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + wordBeingChecked + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4"
 
 /********* Helper Functions ************/
 
@@ -350,7 +351,7 @@ function setCategories() {
 
 };
 
-function checkWordsClicked(wordElement) {
+function checkWordsClicked(wordElement, callbackFunction) {
 	//console.log('hello');
 
 	var checkButtonClicked = wordElement.id;
@@ -389,7 +390,7 @@ function checkWordsClicked(wordElement) {
 			break;
 		case "computerPlayedWord1":
 			var playedWord = document.getElementById("compWord1").innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(wordBeingChecked);
 			break;
 		case "computerPlayedWord2":
@@ -422,6 +423,7 @@ function checkWordsClicked(wordElement) {
 
 	}
 	console.log(wordBeingChecked);
+	callbackFunction(wordBeingChecked);
 	defModal.style.display = "block";
 	
 };
@@ -429,20 +431,31 @@ function checkWordsClicked(wordElement) {
 /********* Dictionary.com API call ************/
 
 function getDictionaryData() {
+	console.log(url);
+	fetch(url, {
+	method: 'get'
+	}).then(function(response) {
+
+	}).catch(function(err) {
+
+	});
 	//console.log(this.responseText);
+	/*
 	var newRequest = new XMLHttpRequest();
+
 	newRequest.addEventListener("load", getDictionaryData);
-	newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + "chicken" + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
+	newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + wordBeingChecked + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4", true);
 	newRequest.send();
+	
 	responseData = this.responseText;
 	parseFromXMLString();
+	*/
 };
-/*
-var newRequest = new XMLHttpRequest();
-newRequest.addEventListener("load", getDictionaryData);
-newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + "chicken" + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
-newRequest.send();
-*/
+
+
+
+
+
 function parseFromXMLString() {
 	var newParser = new DOMParser();
 	var data = newParser.parseFromString(responseData, "text/xml");
