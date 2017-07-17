@@ -1,41 +1,4 @@
-@media (max-width: 768px) {
-	#header {
-		text-align: center;
-	}
-	.checkPlayedWord {
-		margin-right: 5px;
-		float: right;
-	}
-	.playedWord {
-		width: auto;
-		margin: 5px;
 
-	
-	}
-	
-	.switch {
-		margin-right: 10px;
-
-	}
-	.slider {
-		margin-right: 5px;
-	}
-	.player1reject {
-		margin-right: 10px;
-	}
-	.playedWord {
-		font-size: 12px;
-	}
-	.wordPlayed {
-		float: left;
-	}
-	.computerPlayedWord {
-		float: left;
-	}
-	.categoryClass {
-		margin: 5px;
-	}
-}
   
 body {
 	font-family: 'Architects Daughter', cursive;
@@ -43,6 +6,42 @@ body {
 }
 label {
 	
+}
+
+.checkPlayedWord {
+	margin-right: 5px;
+	float: right;
+}
+.playedWord {
+	width: auto;
+	margin: 5px;
+}
+
+.switch {
+	margin-right: 10px;
+
+}
+.slider {
+	margin-right: 5px;
+}
+.player1reject {
+	margin-right: 10px;
+}
+.playedWord {
+	font-size: 12px;
+}
+.wordPlayed {
+	float: left;
+}
+.computerPlayedWord {
+	float: left;
+}
+.categoryClass {
+	margin: 5px;
+}
+
+#header {
+	text-align: center;
 }
 .resultsArea {
 	font-family: 'Lato', sans-serif;
@@ -137,4 +136,25 @@ label {
 	padding: 10px;
 	border-radius: 10px;
 }
-
+@media (min-width: 768px) {
+	
+	.playedWord {
+		font-size: 24px;
+	}
+	.checkPlayedWord {
+		font-size: 24px;
+	}
+	.resultsArea {
+		font-size: 24px;
+	}
+	#submitScores {
+		font-size: 24px;
+	}
+	#playAgain {
+		font-size: 24px;
+	}
+	#gameLetter {
+		font-size: 40px;
+	}
+	
+}

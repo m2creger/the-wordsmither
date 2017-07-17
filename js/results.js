@@ -467,10 +467,6 @@ function getDictionaryData(word) {
 	
 };
 
-
-
-
-
 function parseFromXMLString() {
 	var newParser = new DOMParser();
 	var parsedData = newParser.parseFromString(responseData, "text/xml");

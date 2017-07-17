@@ -1,6 +1,10 @@
 @media (max-width: 768px) {
 	#header {
 		text-align: center;
+		font-size: 40px;
+	}
+	#clickStart {
+		font-size: 40px;
 	}
   
 }
@@ -23,7 +27,7 @@ body {
 	background-color: #e0e0e0;
 	height: 150px;
 	color: #3f51b5;
-	font-size: 40px;
+	font-size: 60px;
 	text-align: center;
 }
 #titleArea {
@@ -37,7 +41,6 @@ body {
 	text-decoration: none;
 	border-radius: 5px;
 	text-align: center;
-	font-size: 40px;
 }
 #startArea {
 
