@@ -390,7 +390,7 @@ function checkWordsClicked(wordElement, callbackFunction) {
 			break;
 		case "computerPlayedWord1":
 			var playedWord = document.getElementById("compWord1").innerHTML;
-			wordBeingChecked = playedWord;
+			wordBeingChecked = JSON.stringify(playedWord);
 			console.log(wordBeingChecked);
 			break;
 		case "computerPlayedWord2":
@@ -422,6 +422,7 @@ function checkWordsClicked(wordElement, callbackFunction) {
 			break;
 
 	}
+	
 	console.log(wordBeingChecked);
 	callbackFunction(wordBeingChecked);
 	defModal.style.display = "block";
