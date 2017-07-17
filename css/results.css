@@ -28,6 +28,13 @@ body {
 	font-family: 'Architects Daughter', cursive;
 
 }
+label {
+	
+}
+.acceptReject {
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+}
 
 .topStrip {
 	background-color: #0093c4;
@@ -52,6 +59,7 @@ body {
 	text-align: center;
 	padding: 5px;
 	margin: 15px;
+	font-family: 'Lato', sans-serif;
 }
 #gameLetter {
 	text-align: center;
