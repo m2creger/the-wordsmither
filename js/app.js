@@ -127,7 +127,7 @@ function startTimer() {
 		seconds++;
 		setTime();
 		console.log(seconds);
-		if (seconds === 30) {
+		if (seconds === 60) {
 			clearInterval(timer);
 			updateResultsPage();
 			

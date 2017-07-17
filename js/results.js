@@ -437,18 +437,23 @@ function getDictionaryData(word) {
 	var testUrl = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/chicken?key=28940578-e2cc-49d4-8802-751d4b2d1bb4";
 	//var url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + word + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4";
 	//console.log(url);
-	//var newRequest = new XMLHttpRequest();
+	var newRequest = new XMLHttpRequest();
 	
 	// newRequest.addEventListener("load", getDictionaryData);
-	/*
+	
 	console.log("word being checked " + wordBeingChecked);
 	newRequest.open("GET", testUrl);
 	console.log(newRequest);
 	newRequest.send();
 	responseData = this.responseText;
 	console.log(responseData);
-	parseFromXMLString(newRequest);
-	*/
+	var newParser = new DOMParser();
+	var parsedData = newParser.parseFromString(responseData, "text/xml");
+	//console.log(parsedData);
+
+	//parseFromXMLString(newRequest);
+	
+	/*
 	fetch(testUrl).then(function(response) {
 		var newParser = new DOMParser();
 		var parsedData = newParser.parseFromString(response, "text/xml");
@@ -464,7 +469,7 @@ function getDictionaryData(word) {
 		console.log(nodes);
 		return nodes;
 	});
-	
+	*/
 };
 
 function parseFromXMLString() {

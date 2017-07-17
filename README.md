@@ -6,6 +6,8 @@ You have 60 seconds to play. When you click the start game button, the timer wil
 
 The main technologies used in this project are CSS, HTML, and Javascript.
 
-To play, go to www.****@***(*).com. 
+I am still working on getting the networking request up and running with the ability to be able to check definitions.
+
+To play, go to https://m2creger.github.io/the-wordsmither/. 
 
 
