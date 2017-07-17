@@ -8,8 +8,9 @@
 	}
 	.playedWord {
 		width: auto;
-	
+		margin: 5px;
 
+	
 	}
 	
 	.switch {
@@ -22,6 +23,18 @@
 	.player1reject {
 		margin-right: 10px;
 	}
+	.playedWord {
+		font-size: 12px;
+	}
+	.wordPlayed {
+		float: left;
+	}
+	.computerPlayedWord {
+		float: left;
+	}
+	.categoryClass {
+		margin: 5px;
+	}
 }
   
 body {
@@ -30,6 +43,9 @@ body {
 }
 label {
 	
+}
+.resultsArea {
+	font-family: 'Lato', sans-serif;
 }
 .acceptReject {
 	text-align: center;
@@ -60,6 +76,7 @@ label {
 	padding: 5px;
 	margin: 15px;
 	font-family: 'Lato', sans-serif;
+	font-size: 12px;
 }
 #gameLetter {
 	text-align: center;
@@ -105,5 +122,19 @@ label {
 }
 .playedWord {
 	margin: 10px;
+}
+.submit {
+	
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+#submitScores {
+	padding: 10px;
+	border-radius: 10px;
+}
+#playAgain {
+	padding: 10px;
+	border-radius: 10px;
 }
 

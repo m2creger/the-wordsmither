@@ -10,8 +10,6 @@ window.onload = function() {
 			console.log(this);
 			checkWordsClicked(this);
 
-			
-			
 				
 		}
 	}
@@ -25,6 +23,9 @@ window.onload = function() {
 		if (event.target == defModal) {
 			defModal.style.display = "none";
 		}
+	}
+	playAgain.onclick = function() {
+		window.location = 'index.html'
 	}
 	
 };
@@ -63,6 +64,7 @@ var computerAcceptedWords = document.getElementsByClassName('computerAccept');
 var submitScore = document.getElementById('submitScores');
 var modalClose = document.getElementsByClassName("close")[0];
 var defModal = document.getElementById("definitionModal");
+var playAgain = document.getElementById("playAgain");
 
 /********* Helper Functions ************/
 

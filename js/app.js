@@ -12,6 +12,17 @@ window.onload = function() {
 		clearRound();
 		setCategories();
 	};
+	modalClose.onclick = function() {
+		howToPlayModal.style.display = "none";
+	}
+	window.onclick = function(event) {
+		if (event.target == howToPlayModal) {
+			howToPlayModal.style.display = "none";
+		}
+	}
+	howToPlay.onclick = function() {
+		howToPlayModal.style.display = "block";
+	}
 };
 	
 
@@ -51,8 +62,9 @@ var startGame = document.getElementById('startGame');
 var newGame = document.getElementById('reset');
 var player1ScoreLabel = document.getElementById('score1');
 var computerScoreLabel = document.getElementById('scoreComputer');
-
-
+var howToPlayModal = document.getElementById("howToPlayModal");
+var modalClose = document.getElementsByClassName("close")[0];
+var howToPlay = document.getElementById("howToPlay");
 /*********** Game Setup *************/
 
 
