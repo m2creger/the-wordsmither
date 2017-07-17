@@ -10,7 +10,7 @@ window.onload = function() {
 			console.log(this);
 			checkWordsClicked(this);
 
-
+			
 			
 				
 		}
@@ -38,7 +38,7 @@ var fiveInput;
 var sixInput;
 var chosenLetter;
 var wordBeingChecked;
-
+var responseData;
 var player1Score = 0;
 var computerScore = 0;
 var computerResultsArray = [];
@@ -420,23 +420,27 @@ function checkWordsClicked(wordElement) {
 
 	}
 	console.log(wordBeingChecked);
-	getDictionaryData();
 	defModal.style.display = "block";
 	
 };
 
 /********* Dictionary.com API call ************/
+
 function getDictionaryData() {
 	//console.log(this.responseText);
+	var newRequest = new XMLHttpRequest();
+	newRequest.addEventListener("load", getDictionaryData);
+	newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + "chicken" + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
+	newRequest.send();
 	responseData = this.responseText;
 	parseFromXMLString();
 };
-
+/*
 var newRequest = new XMLHttpRequest();
 newRequest.addEventListener("load", getDictionaryData);
-newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + wordBeingChecked + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
+newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + "chicken" + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4");
 newRequest.send();
-
+*/
 function parseFromXMLString() {
 	var newParser = new DOMParser();
 	var data = newParser.parseFromString(responseData, "text/xml");
@@ -452,7 +456,7 @@ function parseFromXMLString() {
 	}
 	console.log(nodes);
 	return nodes;
-				
+							
 };
 
 

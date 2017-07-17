@@ -28,7 +28,7 @@ var timer = 0;
 var seconds = 0;
 var interval;
 var gameCategories = [];
-var responseData;
+
 var seconds = 00;
 var tens = 00;
 var player1words = [];
