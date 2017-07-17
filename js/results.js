@@ -8,7 +8,8 @@ window.onload = function() {
 		console.log("the checked played word is " + checkPlayedWord[i]);
 		checkPlayedWord[i].onclick = function () {
 			console.log(this);
-			checkWordsClicked(this, getDictionaryData);
+			checkWordsClicked(this);
+			
 			
 				
 		}
@@ -38,7 +39,7 @@ var fourInput;
 var fiveInput;
 var sixInput;
 var chosenLetter;
-var wordBeingChecked;
+var wordBeingChecked = "";
 var responseData;
 var player1Score = 0;
 var computerScore = 0;
@@ -65,7 +66,7 @@ var submitScore = document.getElementById('submitScores');
 var modalClose = document.getElementsByClassName("close")[0];
 var defModal = document.getElementById("definitionModal");
 var playAgain = document.getElementById("playAgain");
-var url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + wordBeingChecked + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4"
+
 
 /********* Helper Functions ************/
 
@@ -351,7 +352,7 @@ function setCategories() {
 
 };
 
-function checkWordsClicked(wordElement, callbackFunction) {
+function checkWordsClicked(wordElement) {
 	//console.log('hello');
 
 	var checkButtonClicked = wordElement.id;
@@ -360,62 +361,62 @@ function checkWordsClicked(wordElement, callbackFunction) {
 
 		case "checkPlayedWord1":
 			var playedWord = cat1input.innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		case "checkPlayedWord2":
 			var playedWord = cat2input.innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		case "checkPlayedWord3":
 			var playedWord = cat3input.innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		case "checkPlayedWord4":
 			var playedWord = cat4input.innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		case "checkPlayedWord5":
 			var playedWord = cat5input.innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		case "checkPlayedWord6":
 			var playedWord = cat6input.innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		case "computerPlayedWord1":
 			var playedWord = document.getElementById("compWord1").innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(wordBeingChecked);
 			break;
 		case "computerPlayedWord2":
 			var playedWord = document.getElementById("compWord2").innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		case "computerPlayedWord3":
 			var playedWord = document.getElementById("compWord3").innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		case "computerPlayedWord4":
 			var playedWord = document.getElementById("compWord4").innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		case "computerPlayedWord5":
 			var playedWord = document.getElementById("compWord5").innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		case "computerPlayedWord6":
 			var playedWord = document.getElementById("compWord6").innerHTML;
-			wordBeingChecked = JSON.stringify(playedWord);
+			wordBeingChecked = playedWord;
 			console.log(playedWord);
 			break;
 		default:
@@ -424,33 +425,46 @@ function checkWordsClicked(wordElement, callbackFunction) {
 	}
 	
 	console.log(wordBeingChecked);
-	callbackFunction(wordBeingChecked);
+	getDictionaryData(wordBeingChecked);
 	defModal.style.display = "block";
 	
 };
 
 /********* Dictionary.com API call ************/
 
-function getDictionaryData() {
-	console.log(url);
-	fetch(url, {
-	method: 'get'
-	}).then(function(response) {
-
-	}).catch(function(err) {
-
-	});
-	//console.log(this.responseText);
-	/*
-	var newRequest = new XMLHttpRequest();
-
-	newRequest.addEventListener("load", getDictionaryData);
-	newRequest.open("GET", "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + wordBeingChecked + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4", true);
-	newRequest.send();
+function getDictionaryData(word) {
+	console.log("Running dictionary data")
+	var testUrl = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/chicken?key=28940578-e2cc-49d4-8802-751d4b2d1bb4";
+	//var url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + word + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4";
+	//console.log(url);
+	//var newRequest = new XMLHttpRequest();
 	
+	// newRequest.addEventListener("load", getDictionaryData);
+	/*
+	console.log("word being checked " + wordBeingChecked);
+	newRequest.open("GET", testUrl);
+	console.log(newRequest);
+	newRequest.send();
 	responseData = this.responseText;
-	parseFromXMLString();
+	console.log(responseData);
+	parseFromXMLString(newRequest);
 	*/
+	fetch(testUrl).then(function(response) {
+		var newParser = new DOMParser();
+		var parsedData = newParser.parseFromString(response, "text/xml");
+		console.log("parsed data is " + parsedData);
+		var nodes = [];
+		var text;
+		for (var i = 0; i < parsedData.length; i++) {
+			console.log(parsedData[i]);
+			text = parsedData[i].childNodes[0].nodeValue;
+			console.log(text);
+			nodes.push(text);
+		}
+		console.log(nodes);
+		return nodes;
+	});
+	
 };
 
 
@@ -459,9 +473,9 @@ function getDictionaryData() {
 
 function parseFromXMLString() {
 	var newParser = new DOMParser();
-	var data = newParser.parseFromString(responseData, "text/xml");
-	console.log(data);
-	var parsedData = data.getElementsByTagName("dt");
+	var parsedData = newParser.parseFromString(responseData, "text/xml");
+	console.log(responseData);
+	// parsedData = data.getElementsByTagName("dt");
 	var nodes = [];
 	var text;
 	for (var i = 0; i < parsedData.length; i++) {
