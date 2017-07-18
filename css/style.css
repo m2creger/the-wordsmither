@@ -85,6 +85,9 @@ form {
 	border-radius: 10px;
 	margin: 10px;
 }
+#category1Text, #category2Text, #category3Text, #category4Text, #category5Text, #category6Text {
+	margin-right:15px;
+}
 
 /*********** Modal Content ************/
 .modal {

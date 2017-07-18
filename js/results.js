@@ -7,6 +7,7 @@ window.onload = function() {
 	for (var i = 0; i < checkPlayedWord.length; i++) {
 		console.log("the checked played word is " + checkPlayedWord[i]);
 		checkPlayedWord[i].onclick = function () {
+			$("#definitionsToAdd").empty();
 			console.log(this);
 			checkWordsClicked(this);
 			
@@ -25,10 +26,11 @@ window.onload = function() {
 			defModal.style.display = "none";
 		}
 	}
-	playAgain.onclick = function() {
-		window.location = 'index.html'
+	/*
+	howToPlay.onclick = function() {
+		howToPlayModal.style.display = "block";
 	}
-	
+	*/
 };
 
 /**** Results page variables ********/
@@ -66,7 +68,9 @@ var submitScore = document.getElementById('submitScores');
 var modalClose = document.getElementsByClassName("close")[0];
 var defModal = document.getElementById("definitionModal");
 var playAgain = document.getElementById("playAgain");
-
+var definitionsToAdd = document.getElementById("definitionsToAdd");
+var howToPlay = document.getElementById("howToPlay");
+var howToPlayModal = document.getElementById("howToPlayModal");
 
 /********* Helper Functions ************/
 
@@ -426,70 +430,79 @@ function checkWordsClicked(wordElement) {
 	
 	console.log(wordBeingChecked);
 	getDictionaryData(wordBeingChecked);
-	defModal.style.display = "block";
+	
 	
 };
 
 /********* Dictionary.com API call ************/
 
 function getDictionaryData(word) {
-	console.log("Running dictionary data")
-	var testUrl = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/chicken?key=28940578-e2cc-49d4-8802-751d4b2d1bb4";
-	//var url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + word + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4";
-	//console.log(url);
-	var newRequest = new XMLHttpRequest();
-	
-	// newRequest.addEventListener("load", getDictionaryData);
-	
-	console.log("word being checked " + wordBeingChecked);
-	newRequest.open("GET", testUrl);
-	console.log(newRequest);
-	newRequest.send();
-	responseData = this.responseText;
-	console.log(responseData);
-	var newParser = new DOMParser();
-	var parsedData = newParser.parseFromString(responseData, "text/xml");
-	//console.log(parsedData);
+  console.log("Running dictionary data")
+  
+  var url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + word + "?key=28940578-e2cc-49d4-8802-751d4b2d1bb4";
+  
+  var responseData;
 
-	//parseFromXMLString(newRequest);
-	
-	/*
-	fetch(testUrl).then(function(response) {
-		var newParser = new DOMParser();
-		var parsedData = newParser.parseFromString(response, "text/xml");
-		console.log("parsed data is " + parsedData);
-		var nodes = [];
-		var text;
-		for (var i = 0; i < parsedData.length; i++) {
-			console.log(parsedData[i]);
-			text = parsedData[i].childNodes[0].nodeValue;
-			console.log(text);
-			nodes.push(text);
-		}
-		console.log(nodes);
-		return nodes;
-	});
-	*/
+  var nodes = [];
+  fetch(url).then(function(response) {
+    response.text().then(function(data) {
+      console.log('data', data);
+      
+      var newParser = new DOMParser();
+      var parsedData = newParser.parseFromString(data, "text/xml");
+      var responseDefinitions = parsedData.getElementsByTagName("dt");
+      console.log(responseDefinitions);
+      // console.log("parsed data is " + data);
+      
+      var text;
+      for (var i = 0; i < responseDefinitions.length; i++) {
+        console.log(responseDefinitions[i].length);
+        text = responseDefinitions[i].textContent;
+        // console.log(text);
+        nodes.push(text);
+      }
+      console.log(nodes);
+      processNodes(nodes);
+      return nodes;
+    })
+    
+  });
+  
 };
 
-function parseFromXMLString() {
-	var newParser = new DOMParser();
-	var parsedData = newParser.parseFromString(responseData, "text/xml");
-	console.log(responseData);
-	// parsedData = data.getElementsByTagName("dt");
-	var nodes = [];
-	var text;
-	for (var i = 0; i < parsedData.length; i++) {
-		console.log(parsedData[i]);
-		text = parsedData[i].childNodes[0].nodeValue;
-		console.log(text);
-		nodes.push(text);
-	}
-	console.log(nodes);
-	return nodes;
-							
+function processNodes(array) {
+	var noValue;
+	var novalueText;
+    var definition;
+    var definitionValue;
+    var definitionValueToAdd;
+    var bodyArticle = document.getElementById("someClass");
+    var definitions = document.createElement('div');
+    for (var i = 0; i < array.length; i++) {
+    	console.log(array[i]);
+    	console.log(array.length);
+    	if (array.length === []) {
+    		console.log("there are no elements in array")
+    		noValue = document.createElement('p');
+    		noValueText = document.createTextNode("No dictionary definition returned");
+    		noValue.appendChild(noValueText);
+    		definitionsToAdd.appendChild(noValue);
+    	} else {
+    		
+		    definition = document.createElement('p');
+		    definitionValue = array[i];
+		    var updatedDefinitionValue = definitionValue.substr(1);
+		    definitionValueToAdd = document.createTextNode(updatedDefinitionValue);
+		    
+		    //console.log(updatedDefinitionValue);
+		    definition.appendChild(definitionValueToAdd);
+		    definitions.appendChild(definition);
+    	}
+      	definitionsToAdd.appendChild(definitions);
+    }
+    
+    defModal.style.display = "block";
 };
-
 
 /********** computer words ***************/
 

@@ -127,7 +127,7 @@ function startTimer() {
 		seconds++;
 		setTime();
 		console.log(seconds);
-		if (seconds === 60) {
+		if (seconds === 5) {
 			clearInterval(timer);
 			updateResultsPage();
 			
@@ -154,6 +154,7 @@ function updateResultsPage() {
 	
 	if (category1.value.length === 0) {
 		console.log("im here");
+
 		localStorage.setItem('category1input', JSON.stringify("no value"));
 	} else {
 
@@ -178,18 +179,27 @@ function updateResultsPage() {
 		localStorage.setItem('category3input', JSON.stringify(category3.value));
 	}
 	if (category4.value.length === 0) {
+
 		localStorage.setItem('category4input', JSON.stringify("no value"));
+
 	} else {
+
 		localStorage.setItem('category4input', JSON.stringify(category4.value));
 	}
 	if (category5.value.length === 0) {
+
 		localStorage.setItem('category5input', JSON.stringify("no value"));
+
 	} else {
+
 		localStorage.setItem('category5input', JSON.stringify(category5.value));
 	}
 	if (category6.value.length === 0) {
+
 		localStorage.setItem('category6input', JSON.stringify("no value"));
+		
 	} else {
+
 		localStorage.setItem('category6input', JSON.stringify(category6.value));
 	}
 
