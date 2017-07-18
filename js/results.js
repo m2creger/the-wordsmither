@@ -34,6 +34,18 @@ window.onload = function() {
 };
 
 /**** Results page variables ********/
+var scores = {
+	retrievedCompScore: 0,
+	retrievedPlayer1Score: 0,
+	player1Score: 0,
+	computerScore: 0
+};
+
+var inputOne = {
+	oneInput: "",
+	cat1input: "",
+	category1ResultLabel: ""
+};
 var oneInput;
 var twoInput;
 var threeInput;
@@ -116,9 +128,9 @@ function updateChosenLetter() {
 
 function retrieveScores() {
 	console.log("retrieving scores");
-	var retrievedCompScore = sessionStorage.getItem('computerScore');
+	retrievedCompScore = sessionStorage.getItem('computerScore');
 	console.log("The retrieved computer score is " + retrievedCompScore);
-	var retrievedPlayer1Score = sessionStorage.getItem('player1Score');
+	retrievedPlayer1Score = sessionStorage.getItem('player1Score');
 	console.log("The retrieved player 1 score is " + retrievedPlayer1Score);
 	if (retrievedPlayer1Score == null || retrievedPlayer1Score == "null" || retrievedPlayer1Score == NaN || retrievedPlayer1Score =="NaN"){
       console.log("Setting scores for player1");
@@ -126,7 +138,7 @@ function retrieveScores() {
     } else {
       player1Score = parseInt(retrievedPlayer1Score);
     }
-    if (retrievedCompScore == null || retrievedCompScore == "null" || retrievedCompScore == NaN || retrievedCompScore =="NaN"){
+    if (retrievedCompScore == null || retrievedCompScore == "null" || retrievedCompScore == NaN || scores.retrievedCompScore =="NaN"){
  		computerScore = 0;
     } else {
       computerScore = parseInt(retrievedCompScore);

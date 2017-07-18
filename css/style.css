@@ -46,8 +46,12 @@ label, input {
 }
 form {
 	text-align: center;
+	margin: 0 auto;
+	width: 400px;
+	padding: 10px;
 	font-family: 'Lato', sans-serif;
 	font-size: 12px;
+
 }
 #timer, #gameLetter {
 	text-align: center;
@@ -87,6 +91,11 @@ form {
 }
 #category1Text, #category2Text, #category3Text, #category4Text, #category5Text, #category6Text {
 	margin-right:15px;
+
+}
+.catLabels {
+	float: left;
+	margin-left: auto;
 }
 
 /*********** Modal Content ************/
