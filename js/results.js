@@ -493,7 +493,7 @@ function processNodes(array) {
     for (var i = 0; i < array.length; i++) {
     	console.log(array[i]);
     	console.log(array.length);
-    	if (array.length === []) {
+    	if (array.length === 0) {
     		console.log("there are no elements in array")
     		noValue = document.createElement('p');
     		noValueText = document.createTextNode("No dictionary definition returned");
